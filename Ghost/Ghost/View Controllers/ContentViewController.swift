@@ -11,9 +11,13 @@ import UIKit
 
 class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   var posts: [Post] = [];
+  @IBOutlet var tableView: UITableView!;
   
   override func viewDidLoad() {
-    posts = Post.all();
+    Post.all(success: { posts in
+      self.posts = posts;
+      self.tableView.reloadData();
+    });
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -22,6 +26,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "postCell")!;
+    cell.textLabel!.text = posts[indexPath.row].title;
     return cell;
   }
 }

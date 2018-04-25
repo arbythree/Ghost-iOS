@@ -10,23 +10,23 @@ import Foundation
 import Alamofire
 
 class Post {
-  var title = "";
+  var title: String = "";
   
-  class func all() -> [Post] {
-    let headers: HTTPHeaders = [
-      "Authorization": "Bearer pJXILEv2O3E0zglIBF0j1eIAXoHye2SFPBwG8Tx3ZFaxEbNVvTTEjPCj3RbJooeyjmjr81REABQcXBeJmJZ7shFzi35xdRHV2SPjHfa79VN9mn7Kw2TeTt0bR67Rbw2TX3Qswr2fspwhrZTESKMEEAeyTnQiHa6B0pORKzUSch5fo1oVtpZRYx0bzziFgFD"
-    ]
-    Alamofire.request("https://theojisan.com/ghost/api/v0.1/posts/", headers: headers).responseJSON { response in
-      let status = response.response?.statusCode;
-      let json = response.result.value as! NSDictionary;
-      
-      if (status == 200) {
-        let postsJSON = json["posts"];
-      } else {
-        
-      }
-    }
+  class func all(success: @escaping ([Post]) -> Void) -> Void {
+    let client = GhostRESTClient();
     
-    return [];
+    client.getJSON(url: "/posts/", completionHandler: { responseJSON in
+      let postsJSON = responseJSON["posts"] as! NSArray;
+      var posts: [Post] = [];
+      for postJSON in postsJSON {
+        let post = Post(json: postJSON as! NSDictionary);
+        posts.append(post);
+      }
+      success(posts);
+    });
+  }
+  
+  init(json: NSDictionary) {
+    title = json["title"] as! String;
   }
 }

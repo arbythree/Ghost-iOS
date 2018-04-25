@@ -20,6 +20,7 @@
 		7F6375F320909F8D0051F4A5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F6375F620909FB00051F4A5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; };
 		7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375F92090AAEA0051F4A5 /* TabBarController.swift */; };
+		7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A42090CE2200B43914 /* GhostRESTClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		7F6375EE20901A270051F4A5 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		7F6375F020901B0C0051F4A5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7F6375F92090AAEA0051F4A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		7FC888A42090CE2200B43914 /* GhostRESTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostRESTClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				7F6375EC209019A60051F4A5 /* Post.swift */,
+				7FC888A42090CE2200B43914 /* GhostRESTClient.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			files = (
 				7F6375EA209019600051F4A5 /* ContentViewController.swift in Sources */,
 				7F6375BD209018520051F4A5 /* ViewController.swift in Sources */,
+				7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */,
 				7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */,
 				7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */,
 				7F6375ED209019A60051F4A5 /* Post.swift in Sources */,
