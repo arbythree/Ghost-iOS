@@ -25,8 +25,9 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "postCell")!;
-    cell.textLabel!.text = posts[indexPath.row].title;
+    let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as! PostTableViewCell;
+//    cell.textLabel!.text = posts[indexPath.row].title;
+    cell.setPost(value: posts[indexPath.row]);
     return cell;
   }
 }

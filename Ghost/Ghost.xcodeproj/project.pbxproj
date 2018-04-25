@@ -21,6 +21,12 @@
 		7F6375F620909FB00051F4A5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; };
 		7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375F92090AAEA0051F4A5 /* TabBarController.swift */; };
 		7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A42090CE2200B43914 /* GhostRESTClient.swift */; };
+		7FC888A72090DEC300B43914 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A62090DEC300B43914 /* LoginViewController.swift */; };
+		7FC888A92090E0B000B43914 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A82090E0B000B43914 /* AuthenticationManager.swift */; };
+		7FC888AC2090E0EC00B43914 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC888AA2090E0DF00B43914 /* KeychainSwift.framework */; };
+		7FC888AD2090E0EC00B43914 /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC888AA2090E0DF00B43914 /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7FC888AF20910BE700B43914 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888AE20910BE700B43914 /* MoreViewController.swift */; };
+		7FC888B2209121E700B43914 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888B1209121E700B43914 /* PostTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7FC888AD2090E0EC00B43914 /* KeychainSwift.framework in Embed Frameworks */,
 				7F6375F320909F8D0051F4A5 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -74,6 +81,11 @@
 		7F6375F020901B0C0051F4A5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7F6375F92090AAEA0051F4A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7FC888A42090CE2200B43914 /* GhostRESTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostRESTClient.swift; sourceTree = "<group>"; };
+		7FC888A62090DEC300B43914 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7FC888A82090E0B000B43914 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		7FC888AA2090E0DF00B43914 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
+		7FC888AE20910BE700B43914 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		7FC888B1209121E700B43914 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC888AC2090E0EC00B43914 /* KeychainSwift.framework in Frameworks */,
 				7F6375F620909FB00051F4A5 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +141,7 @@
 		7F6375B9209018520051F4A5 /* Ghost */ = {
 			isa = PBXGroup;
 			children = (
+				7FC888B0209121CB00B43914 /* TableView Cells */,
 				7F6375EB2090198C0051F4A5 /* Models */,
 				7F6375E8209019270051F4A5 /* View Controllers */,
 				7F6375BA209018520051F4A5 /* AppDelegate.swift */,
@@ -163,6 +177,8 @@
 			children = (
 				7F6375E9209019600051F4A5 /* ContentViewController.swift */,
 				7F6375F92090AAEA0051F4A5 /* TabBarController.swift */,
+				7FC888A62090DEC300B43914 /* LoginViewController.swift */,
+				7FC888AE20910BE700B43914 /* MoreViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -172,6 +188,7 @@
 			children = (
 				7F6375EC209019A60051F4A5 /* Post.swift */,
 				7FC888A42090CE2200B43914 /* GhostRESTClient.swift */,
+				7FC888A82090E0B000B43914 /* AuthenticationManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,8 +196,17 @@
 		7F6375F520909FB00051F4A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7FC888AA2090E0DF00B43914 /* KeychainSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7FC888B0209121CB00B43914 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7FC888B1209121E700B43914 /* PostTableViewCell.swift */,
+			);
+			path = "TableView Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,10 +342,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC888AF20910BE700B43914 /* MoreViewController.swift in Sources */,
+				7FC888A72090DEC300B43914 /* LoginViewController.swift in Sources */,
+				7FC888A92090E0B000B43914 /* AuthenticationManager.swift in Sources */,
 				7F6375EA209019600051F4A5 /* ContentViewController.swift in Sources */,
 				7F6375BD209018520051F4A5 /* ViewController.swift in Sources */,
 				7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */,
 				7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */,
+				7FC888B2209121E700B43914 /* PostTableViewCell.swift in Sources */,
 				7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */,
 				7F6375ED209019A60051F4A5 /* Post.swift in Sources */,
 			);

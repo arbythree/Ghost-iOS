@@ -11,11 +11,16 @@ import Alamofire
 
 class Post {
   var title: String = "";
+  var author: String = "";
+  var status: String = "";
+  var updated_at: Date = Date();
+  var created_at: Date = Date();
+  var published_at: Date = Date();
   
   class func all(success: @escaping ([Post]) -> Void) -> Void {
     let client = GhostRESTClient();
     
-    client.getJSON(url: "/posts/", completionHandler: { responseJSON in
+    client.getJSON(path: "/posts/", completionHandler: { responseJSON in
       let postsJSON = responseJSON["posts"] as! NSArray;
       var posts: [Post] = [];
       for postJSON in postsJSON {
@@ -27,6 +32,19 @@ class Post {
   }
   
   init(json: NSDictionary) {
-    title = json["title"] as! String;
+    let formatter = DateFormatter();
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    
+    let ua = json["updated_at"]   as! String;
+    let pa = json["published_at"] as! String;
+    let ca = json["created_at"]   as! String;
+    
+    title  = json["title"]  as! String;
+    author = json["author"] as! String;
+    status = json["status"] as! String;
+    
+    updated_at   = formatter.date(from: ua)!;
+    published_at = formatter.date(from: pa)!;
+    created_at   = formatter.date(from: ca)!;
   }
 }
