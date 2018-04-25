@@ -14,10 +14,12 @@
 		7F6375C5209018530051F4A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6375C3209018530051F4A5 /* LaunchScreen.storyboard */; };
 		7F6375D0209018540051F4A5 /* GhostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375CF209018540051F4A5 /* GhostTests.swift */; };
 		7F6375DB209018540051F4A5 /* GhostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375DA209018540051F4A5 /* GhostUITests.swift */; };
-		7F6375EA209019600051F4A5 /* PostIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375E9209019600051F4A5 /* PostIndexViewController.swift */; };
+		7F6375EA209019600051F4A5 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375E9209019600051F4A5 /* ContentViewController.swift */; };
 		7F6375ED209019A60051F4A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375EC209019A60051F4A5 /* Post.swift */; };
 		7F6375EF20901A270051F4A5 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 7F6375EE20901A270051F4A5 /* Cartfile */; };
-		7F6375F120901B0C0051F4A5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; };
+		7F6375F320909F8D0051F4A5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F6375F620909FB00051F4A5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; };
+		7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375F92090AAEA0051F4A5 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7F6375F420909F8D0051F4A5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7F6375F320909F8D0051F4A5 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7F6375B7209018520051F4A5 /* Ghost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ghost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6375BA209018520051F4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,10 +67,11 @@
 		7F6375D6209018540051F4A5 /* GhostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6375DA209018540051F4A5 /* GhostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostUITests.swift; sourceTree = "<group>"; };
 		7F6375DC209018540051F4A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F6375E9209019600051F4A5 /* PostIndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostIndexViewController.swift; sourceTree = "<group>"; };
+		7F6375E9209019600051F4A5 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		7F6375EC209019A60051F4A5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		7F6375EE20901A270051F4A5 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		7F6375F020901B0C0051F4A5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		7F6375F92090AAEA0051F4A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F6375F120901B0C0051F4A5 /* Alamofire.framework in Frameworks */,
+				7F6375F620909FB00051F4A5 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +109,7 @@
 				7F6375D9209018540051F4A5 /* GhostUITests */,
 				7F6375B8209018520051F4A5 /* Products */,
 				7F6375F020901B0C0051F4A5 /* Alamofire.framework */,
+				7F6375F520909FB00051F4A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,7 +159,8 @@
 		7F6375E8209019270051F4A5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7F6375E9209019600051F4A5 /* PostIndexViewController.swift */,
+				7F6375E9209019600051F4A5 /* ContentViewController.swift */,
+				7F6375F92090AAEA0051F4A5 /* TabBarController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -154,6 +173,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7F6375F520909FB00051F4A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,6 +190,7 @@
 				7F6375B3209018520051F4A5 /* Sources */,
 				7F6375B4209018520051F4A5 /* Frameworks */,
 				7F6375B5209018520051F4A5 /* Resources */,
+				7F6375F420909F8D0051F4A5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,9 +313,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F6375EA209019600051F4A5 /* PostIndexViewController.swift in Sources */,
+				7F6375EA209019600051F4A5 /* ContentViewController.swift in Sources */,
 				7F6375BD209018520051F4A5 /* ViewController.swift in Sources */,
 				7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */,
+				7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */,
 				7F6375ED209019A60051F4A5 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

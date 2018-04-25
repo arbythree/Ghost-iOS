@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PostIndexViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   var posts: [Post] = [];
   
   override func viewDidLoad() {
