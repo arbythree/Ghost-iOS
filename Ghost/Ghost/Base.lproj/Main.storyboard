@@ -211,7 +211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cGE-xP-lQk">
-                                <rect key="frame" x="0.0" y="111" width="375" height="556"/>
+                                <rect key="frame" x="10" y="111" width="355" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -223,6 +223,9 @@
                                     <constraint firstAttribute="height" constant="30" id="lWU-2y-ko2"/>
                                 </constraints>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel" destination="Evf-2w-lQ0" eventType="touchUpInside" id="9vp-R6-BpL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jv3-zl-zKl">
                                 <rect key="frame" x="325" y="26" width="34" height="30"/>
@@ -231,6 +234,15 @@
                                 </constraints>
                                 <state key="normal" title="Save"/>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTP-fo-o57">
+                                <rect key="frame" x="16" y="73" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dI7-UK-K9h"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwt-sc-XQv">
                                 <rect key="frame" x="160" y="26" width="54" height="30"/>
                                 <constraints>
@@ -241,24 +253,20 @@
                                     <action selector="showPreview" destination="Evf-2w-lQ0" eventType="touchUpInside" id="ZGN-dP-hDA"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTP-fo-o57">
-                                <rect key="frame" x="16" y="73" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ZDI-TC-oeg" firstAttribute="trailing" secondItem="uTP-fo-o57" secondAttribute="trailing" constant="16" id="7eR-ql-WDq"/>
                             <constraint firstItem="jwt-sc-XQv" firstAttribute="centerX" secondItem="ZDI-TC-oeg" secondAttribute="centerX" id="9SC-F7-1hH"/>
                             <constraint firstItem="cGE-xP-lQk" firstAttribute="top" secondItem="ZDI-TC-oeg" secondAttribute="top" constant="91" id="FJu-Qb-E67"/>
-                            <constraint firstItem="cGE-xP-lQk" firstAttribute="trailing" secondItem="ZDI-TC-oeg" secondAttribute="trailing" id="GSX-pn-WSd"/>
+                            <constraint firstItem="cGE-xP-lQk" firstAttribute="trailing" secondItem="ZDI-TC-oeg" secondAttribute="trailing" constant="-10" id="GSX-pn-WSd"/>
                             <constraint firstItem="2bg-za-P94" firstAttribute="leading" secondItem="ZDI-TC-oeg" secondAttribute="leading" constant="16" id="HDg-K1-i3H"/>
                             <constraint firstItem="ZDI-TC-oeg" firstAttribute="trailing" secondItem="jv3-zl-zKl" secondAttribute="trailing" constant="16" id="NYe-cm-1iV"/>
-                            <constraint firstItem="cGE-xP-lQk" firstAttribute="leading" secondItem="ZDI-TC-oeg" secondAttribute="leading" id="TsL-CF-Ow9"/>
+                            <constraint firstItem="uTP-fo-o57" firstAttribute="top" secondItem="2bg-za-P94" secondAttribute="bottom" constant="17" id="O4p-xi-Udf"/>
+                            <constraint firstItem="cGE-xP-lQk" firstAttribute="leading" secondItem="ZDI-TC-oeg" secondAttribute="leading" constant="10" id="TsL-CF-Ow9"/>
                             <constraint firstItem="cGE-xP-lQk" firstAttribute="bottom" secondItem="ZDI-TC-oeg" secondAttribute="bottom" id="YTw-9W-Vd6"/>
                             <constraint firstItem="2bg-za-P94" firstAttribute="top" secondItem="ZDI-TC-oeg" secondAttribute="top" constant="6" id="cCa-Bc-HiS"/>
+                            <constraint firstItem="uTP-fo-o57" firstAttribute="leading" secondItem="ZDI-TC-oeg" secondAttribute="leading" constant="16" id="gDN-Dp-1Tc"/>
                             <constraint firstItem="jv3-zl-zKl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vch-y1-vsO" secondAttribute="leading" constant="20" symbolic="YES" id="hOA-Pk-thh"/>
                             <constraint firstItem="jwt-sc-XQv" firstAttribute="top" secondItem="ZDI-TC-oeg" secondAttribute="top" constant="6" id="jnr-x0-Cxy"/>
                             <constraint firstItem="jv3-zl-zKl" firstAttribute="top" secondItem="ZDI-TC-oeg" secondAttribute="top" constant="6" id="tfv-P3-Ufl"/>
@@ -267,6 +275,7 @@
                     </view>
                     <connections>
                         <outlet property="bodyTextView" destination="cGE-xP-lQk" id="db1-mz-IjV"/>
+                        <outlet property="cancelButton" destination="2bg-za-P94" id="bU3-jq-Bnu"/>
                         <outlet property="titleTextField" destination="uTP-fo-o57" id="oB0-pm-0Ve"/>
                         <segue destination="UY3-NZ-m2q" kind="presentation" identifier="previewSegue" modalTransitionStyle="flipHorizontal" id="Z6u-fb-38X"/>
                     </connections>
@@ -317,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlp-4G-Fr6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-687.20000000000005" y="412.44377811094455"/>
+            <point key="canvasLocation" x="-719" y="413"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="vKY-wT-trx">

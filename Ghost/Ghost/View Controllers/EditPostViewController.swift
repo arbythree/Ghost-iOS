@@ -10,21 +10,37 @@ import Foundation
 import UIKit
 
 class EditPostViewController: UIViewController {
-  var post: Post?;
+  var post: Post = Post();
+  @IBOutlet var cancelButton: UIButton!;
   @IBOutlet var titleTextField: UITextField!;
   @IBOutlet var bodyTextView: UITextView!;
   
   func setPost(value: Post) {
     post = value;
+    post.reload();
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated);
+    post.reload();
+    populatePostData();
   }
   
   override func viewDidLoad() {
-    if (post != nil) {
-      titleTextField.text = post!.title;
-    }
+    populatePostData();
+  }
+  
+  func populatePostData() {
+    titleTextField.text = post.title;
+    cancelButton.isHidden = post.isNew();
+    bodyTextView.text = post.markdown;
   }
   
   @IBAction func showPreview() {
     performSegue(withIdentifier: "previewSegue", sender: self);
+  }
+  
+  @IBAction func cancel() {
+    dismiss(animated: true, completion: nil);
   }
 }
