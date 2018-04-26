@@ -14,13 +14,13 @@ class GhostRESTClient {
     return "https://theojisan.com/ghost/api/v0.1\(path)";
   }
   
-  func getJSON(path: String, completionHandler: @escaping (_ : NSDictionary) -> Void) {
+  func getJSON(path: String, parameters: Parameters, completionHandler: @escaping (_ : NSDictionary) -> Void) {
     let mgr = AuthenticationManager.sharedManager;
     let headers: HTTPHeaders = [
         "Authorization": "Bearer \(mgr.token!)"
     ]
     
-    Alamofire.request(fullURL(path: path), headers: headers).responseJSON { response in
+    Alamofire.request(fullURL(path: path), parameters: parameters, headers: headers).responseJSON { response in
       let status = response.response?.statusCode;
       if (status == 200) {
         let json = response.result.value as! NSDictionary;

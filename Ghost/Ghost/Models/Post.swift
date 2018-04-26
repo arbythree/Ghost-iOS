@@ -17,10 +17,16 @@ class Post {
   var created_at: Date = Date();
   var published_at: Date = Date();
   
+//  https://theojisan.com/ghost/api/v0.1/posts/?limit=30&page=1&status=all&staticPages=all&formats=mobiledoc,plaintext&include=tags
+  
   class func all(success: @escaping ([Post]) -> Void) -> Void {
     let client = GhostRESTClient();
     
-    client.getJSON(path: "/posts/", completionHandler: { responseJSON in
+    let params: Parameters = [
+      "status": "all"
+    ]
+    
+    client.getJSON(path: "/posts/", parameters: params, completionHandler: { responseJSON in
       let postsJSON = responseJSON["posts"] as! NSArray;
       var posts: [Post] = [];
       for postJSON in postsJSON {
@@ -31,12 +37,16 @@ class Post {
     });
   }
   
+  func isPublished() -> Bool {
+    return status == "published";
+  }
+  
   init(json: NSDictionary) {
     let formatter = DateFormatter();
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
     
     let ua = json["updated_at"]   as! String;
-    let pa = json["published_at"] as! String;
+//    let pa = json["published_at"] as! String;
     let ca = json["created_at"]   as! String;
     
     title  = json["title"]  as! String;
@@ -44,7 +54,7 @@ class Post {
     status = json["status"] as! String;
     
     updated_at   = formatter.date(from: ua)!;
-    published_at = formatter.date(from: pa)!;
+//    published_at = formatter.date(from: pa)!;
     created_at   = formatter.date(from: ca)!;
   }
 }
