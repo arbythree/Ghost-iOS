@@ -1,2 +1,4 @@
 github "Alamofire/Alamofire" "4.7.2"
+github "crossroadlabs/CDiscount" "0.1.0"
+github "crossroadlabs/Markdown" "0.1.0"
 github "evgenyneu/keychain-swift" "11.0.0"

@@ -16,7 +16,6 @@
 		7F6375DB209018540051F4A5 /* GhostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375DA209018540051F4A5 /* GhostUITests.swift */; };
 		7F6375EA209019600051F4A5 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375E9209019600051F4A5 /* ContentViewController.swift */; };
 		7F6375ED209019A60051F4A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375EC209019A60051F4A5 /* Post.swift */; };
-		7F6375EF20901A270051F4A5 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 7F6375EE20901A270051F4A5 /* Cartfile */; };
 		7F6375F320909F8D0051F4A5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F6375F620909FB00051F4A5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; };
 		7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375F92090AAEA0051F4A5 /* TabBarController.swift */; };
@@ -30,6 +29,9 @@
 		7FC888AD2090E0EC00B43914 /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC888AA2090E0DF00B43914 /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7FC888AF20910BE700B43914 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888AE20910BE700B43914 /* MoreViewController.swift */; };
 		7FC888B2209121E700B43914 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888B1209121E700B43914 /* PostTableViewCell.swift */; };
+		7FF1F102209290910048EE2B /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF1F101209290910048EE2B /* ShareViewController.swift */; };
+		7FF1F105209290910048EE2B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FF1F103209290910048EE2B /* MainInterface.storyboard */; };
+		7FF1F109209290910048EE2B /* Share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7FF1F0FF209290910048EE2B /* Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,13 @@
 			remoteGlobalIDString = 7F6375B6209018520051F4A5;
 			remoteInfo = Ghost;
 		};
+		7FF1F107209290910048EE2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F6375AF209018520051F4A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FF1F0FE209290910048EE2B;
+			remoteInfo = Share;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +69,17 @@
 				7F6375F320909F8D0051F4A5 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FF1F10D209290910048EE2B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7FF1F109209290910048EE2B /* Share.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -80,7 +100,6 @@
 		7F6375DC209018540051F4A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F6375E9209019600051F4A5 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		7F6375EC209019A60051F4A5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		7F6375EE20901A270051F4A5 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		7F6375F020901B0C0051F4A5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7F6375F92090AAEA0051F4A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +111,10 @@
 		7FC888AA2090E0DF00B43914 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		7FC888AE20910BE700B43914 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		7FC888B1209121E700B43914 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		7FF1F0FF209290910048EE2B /* Share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FF1F101209290910048EE2B /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		7FF1F104209290910048EE2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7FF1F106209290910048EE2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,16 +142,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7FF1F0FC209290910048EE2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		7F6375AE209018520051F4A5 = {
 			isa = PBXGroup;
 			children = (
-				7F6375EE20901A270051F4A5 /* Cartfile */,
 				7F6375B9209018520051F4A5 /* Ghost */,
 				7F6375CE209018540051F4A5 /* GhostTests */,
 				7F6375D9209018540051F4A5 /* GhostUITests */,
+				7FF1F100209290910048EE2B /* Share */,
 				7F6375B8209018520051F4A5 /* Products */,
 				7F6375F020901B0C0051F4A5 /* Alamofire.framework */,
 				7F6375F520909FB00051F4A5 /* Frameworks */,
@@ -141,6 +171,7 @@
 				7F6375B7209018520051F4A5 /* Ghost.app */,
 				7F6375CB209018540051F4A5 /* GhostTests.xctest */,
 				7F6375D6209018540051F4A5 /* GhostUITests.xctest */,
+				7FF1F0FF209290910048EE2B /* Share.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,6 +188,7 @@
 				7F6375C1209018530051F4A5 /* Assets.xcassets */,
 				7F6375C3209018530051F4A5 /* LaunchScreen.storyboard */,
 				7F6375C6209018530051F4A5 /* Info.plist */,
+				7FF1F10E20934E340048EE2B /* Housekeeping */,
 			);
 			path = Ghost;
 			sourceTree = "<group>";
@@ -219,6 +251,23 @@
 			path = "TableView Cells";
 			sourceTree = "<group>";
 		};
+		7FF1F100209290910048EE2B /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				7FF1F101209290910048EE2B /* ShareViewController.swift */,
+				7FF1F103209290910048EE2B /* MainInterface.storyboard */,
+				7FF1F106209290910048EE2B /* Info.plist */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		7FF1F10E20934E340048EE2B /* Housekeeping */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Housekeeping;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -230,10 +279,12 @@
 				7F6375B4209018520051F4A5 /* Frameworks */,
 				7F6375B5209018520051F4A5 /* Resources */,
 				7F6375F420909F8D0051F4A5 /* Embed Frameworks */,
+				7FF1F10D209290910048EE2B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7FF1F108209290910048EE2B /* PBXTargetDependency */,
 			);
 			name = Ghost;
 			productName = Ghost;
@@ -276,6 +327,23 @@
 			productReference = 7F6375D6209018540051F4A5 /* GhostUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		7FF1F0FE209290910048EE2B /* Share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FF1F10C209290910048EE2B /* Build configuration list for PBXNativeTarget "Share" */;
+			buildPhases = (
+				7FF1F0FB209290910048EE2B /* Sources */,
+				7FF1F0FC209290910048EE2B /* Frameworks */,
+				7FF1F0FD209290910048EE2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Share;
+			productName = Share;
+			productReference = 7FF1F0FF209290910048EE2B /* Share.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -297,6 +365,9 @@
 						CreatedOnToolsVersion = 9.3;
 						TestTargetID = 7F6375B6209018520051F4A5;
 					};
+					7FF1F0FE209290910048EE2B = {
+						CreatedOnToolsVersion = 9.3;
+					};
 				};
 			};
 			buildConfigurationList = 7F6375B2209018520051F4A5 /* Build configuration list for PBXProject "Ghost" */;
@@ -315,6 +386,7 @@
 				7F6375B6209018520051F4A5 /* Ghost */,
 				7F6375CA209018540051F4A5 /* GhostTests */,
 				7F6375D5209018540051F4A5 /* GhostUITests */,
+				7FF1F0FE209290910048EE2B /* Share */,
 			);
 		};
 /* End PBXProject section */
@@ -326,7 +398,6 @@
 			files = (
 				7F6375C5209018530051F4A5 /* LaunchScreen.storyboard in Resources */,
 				7F6375C2209018530051F4A5 /* Assets.xcassets in Resources */,
-				7F6375EF20901A270051F4A5 /* Cartfile in Resources */,
 				7F6375C0209018520051F4A5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +413,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FF1F0FD209290910048EE2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FF1F105209290910048EE2B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +462,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7FF1F0FB209290910048EE2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FF1F102209290910048EE2B /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -395,6 +482,11 @@
 			isa = PBXTargetDependency;
 			target = 7F6375B6209018520051F4A5 /* Ghost */;
 			targetProxy = 7F6375D7209018540051F4A5 /* PBXContainerItemProxy */;
+		};
+		7FF1F108209290910048EE2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FF1F0FE209290910048EE2B /* Share */;
+			targetProxy = 7FF1F107209290910048EE2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -413,6 +505,14 @@
 				7F6375C4209018530051F4A5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7FF1F103209290910048EE2B /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7FF1F104209290910048EE2B /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -535,6 +635,7 @@
 		7F6375E0209018540051F4A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7PY3AJJXS2;
@@ -557,6 +658,7 @@
 		7F6375E1209018540051F4A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7PY3AJJXS2;
@@ -658,6 +760,44 @@
 			};
 			name = Release;
 		};
+		7FF1F10A209290910048EE2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7PY3AJJXS2;
+				INFOPLIST_FILE = Share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.analemmaheavyindustries.Ghost.Share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7FF1F10B209290910048EE2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7PY3AJJXS2;
+				INFOPLIST_FILE = Share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.analemmaheavyindustries.Ghost.Share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -693,6 +833,15 @@
 			buildConfigurations = (
 				7F6375E6209018540051F4A5 /* Debug */,
 				7F6375E7209018540051F4A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FF1F10C209290910048EE2B /* Build configuration list for PBXNativeTarget "Share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FF1F10A209290910048EE2B /* Debug */,
+				7FF1F10B209290910048EE2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

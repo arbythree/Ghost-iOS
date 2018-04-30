@@ -275,6 +275,7 @@
                     </view>
                     <connections>
                         <outlet property="bodyTextView" destination="cGE-xP-lQk" id="db1-mz-IjV"/>
+                        <outlet property="bodyTextViewBottomConstraint" destination="YTw-9W-Vd6" id="sck-fm-mfw"/>
                         <outlet property="cancelButton" destination="2bg-za-P94" id="bU3-jq-Bnu"/>
                         <outlet property="titleTextField" destination="uTP-fo-o57" id="oB0-pm-0Ve"/>
                         <segue destination="UY3-NZ-m2q" kind="presentation" identifier="previewSegue" modalTransitionStyle="flipHorizontal" id="Z6u-fb-38X"/>

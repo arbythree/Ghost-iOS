@@ -14,6 +14,7 @@ class EditPostViewController: UIViewController {
   @IBOutlet var cancelButton: UIButton!;
   @IBOutlet var titleTextField: UITextField!;
   @IBOutlet var bodyTextView: UITextView!;
+  @IBOutlet var bodyTextViewBottomConstraint: NSLayoutConstraint!;
   
   func setPost(value: Post) {
     post = value;
@@ -28,6 +29,13 @@ class EditPostViewController: UIViewController {
   
   override func viewDidLoad() {
     populatePostData();
+    bodyTextView.becomeFirstResponder();
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(keyboardWillShow),
+      name: .UIKeyboardWillShow,
+      object: nil
+    )
   }
   
   func populatePostData() {
@@ -42,5 +50,14 @@ class EditPostViewController: UIViewController {
   
   @IBAction func cancel() {
     dismiss(animated: true, completion: nil);
+  }
+  
+  @objc func keyboardWillShow(notification: Notification) {
+    if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+      let keyboardRect = keyboardFrame.cgRectValue;
+      let keyboardHeight = keyboardRect.height;
+      bodyTextViewBottomConstraint.constant = -keyboardHeight + 28;
+      self.view.layoutIfNeeded();
+    }
   }
 }
