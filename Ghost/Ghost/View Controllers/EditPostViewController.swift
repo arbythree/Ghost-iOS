@@ -18,12 +18,16 @@ class EditPostViewController: UIViewController {
   
   func setPost(value: Post) {
     post = value;
-    post.reload();
+    post.reload {
+      
+    };
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated);
-    post.reload();
+    post.reload {
+      
+    };
     populatePostData();
   }
   

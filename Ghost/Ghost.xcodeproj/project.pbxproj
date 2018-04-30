@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F35F0DE209764B000510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
+		7F35F0DF209764B900510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
+		7F35F0E0209764B900510BDD /* Down.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F35F0E52097656900510BDD /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F35F0E42097656900510BDD /* Tag.swift */; };
+		7F35F0E920976F9200510BDD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F35F0E820976F9200510BDD /* User.swift */; };
+		7F35F0EB209770D300510BDD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0EA209770D300510BDD /* Alamofire.framework */; };
+		7F35F0EC209770DA00510BDD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0EA209770D300510BDD /* Alamofire.framework */; };
+		7F35F0ED209770DA00510BDD /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0EA209770D300510BDD /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375BA209018520051F4A5 /* AppDelegate.swift */; };
 		7F6375BD209018520051F4A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375BC209018520051F4A5 /* ViewController.swift */; };
 		7F6375C0209018520051F4A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6375BE209018520051F4A5 /* Main.storyboard */; };
@@ -16,8 +24,6 @@
 		7F6375DB209018540051F4A5 /* GhostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375DA209018540051F4A5 /* GhostUITests.swift */; };
 		7F6375EA209019600051F4A5 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375E9209019600051F4A5 /* ContentViewController.swift */; };
 		7F6375ED209019A60051F4A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375EC209019A60051F4A5 /* Post.swift */; };
-		7F6375F320909F8D0051F4A5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7F6375F620909FB00051F4A5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6375F020901B0C0051F4A5 /* Alamofire.framework */; };
 		7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375F92090AAEA0051F4A5 /* TabBarController.swift */; };
 		7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */; };
 		7F8CC11220916956005D8E2E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CC11120916956005D8E2E /* PreviewViewController.swift */; };
@@ -66,7 +72,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7FC888AD2090E0EC00B43914 /* KeychainSwift.framework in Embed Frameworks */,
-				7F6375F320909F8D0051F4A5 /* Alamofire.framework in Embed Frameworks */,
+				7F35F0ED209770DA00510BDD /* Alamofire.framework in Embed Frameworks */,
+				7F35F0E0209764B900510BDD /* Down.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +92,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7F35F0DD209764B000510BDD /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
+		7F35F0E42097656900510BDD /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		7F35F0E820976F9200510BDD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7F35F0EA209770D300510BDD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7F6375B7209018520051F4A5 /* Ghost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ghost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6375BA209018520051F4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6375BC209018520051F4A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +111,6 @@
 		7F6375DC209018540051F4A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F6375E9209019600051F4A5 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		7F6375EC209019A60051F4A5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		7F6375F020901B0C0051F4A5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7F6375F92090AAEA0051F4A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		7F8CC11120916956005D8E2E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -122,9 +132,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F35F0DF209764B900510BDD /* Down.framework in Frameworks */,
+				7F35F0EC209770DA00510BDD /* Alamofire.framework in Frameworks */,
 				7F8CC11420916B84005D8E2E /* WebKit.framework in Frameworks */,
 				7FC888AC2090E0EC00B43914 /* KeychainSwift.framework in Frameworks */,
-				7F6375F620909FB00051F4A5 /* Alamofire.framework in Frameworks */,
+				7F35F0EB209770D300510BDD /* Alamofire.framework in Frameworks */,
+				7F35F0DE209764B000510BDD /* Down.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +173,6 @@
 				7F6375D9209018540051F4A5 /* GhostUITests */,
 				7FF1F100209290910048EE2B /* Share */,
 				7F6375B8209018520051F4A5 /* Products */,
-				7F6375F020901B0C0051F4A5 /* Alamofire.framework */,
 				7F6375F520909FB00051F4A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -188,7 +200,6 @@
 				7F6375C1209018530051F4A5 /* Assets.xcassets */,
 				7F6375C3209018530051F4A5 /* LaunchScreen.storyboard */,
 				7F6375C6209018530051F4A5 /* Info.plist */,
-				7FF1F10E20934E340048EE2B /* Housekeeping */,
 			);
 			path = Ghost;
 			sourceTree = "<group>";
@@ -228,8 +239,10 @@
 			isa = PBXGroup;
 			children = (
 				7F6375EC209019A60051F4A5 /* Post.swift */,
+				7F35F0E42097656900510BDD /* Tag.swift */,
 				7FC888A42090CE2200B43914 /* GhostRESTClient.swift */,
 				7FC888A82090E0B000B43914 /* AuthenticationManager.swift */,
+				7F35F0E820976F9200510BDD /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +250,8 @@
 		7F6375F520909FB00051F4A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F35F0EA209770D300510BDD /* Alamofire.framework */,
+				7F35F0DD209764B000510BDD /* Down.framework */,
 				7F8CC11320916B83005D8E2E /* WebKit.framework */,
 				7FC888AA2090E0DF00B43914 /* KeychainSwift.framework */,
 			);
@@ -259,13 +274,6 @@
 				7FF1F106209290910048EE2B /* Info.plist */,
 			);
 			path = Share;
-			sourceTree = "<group>";
-		};
-		7FF1F10E20934E340048EE2B /* Housekeeping */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Housekeeping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,12 +445,14 @@
 				7F6375EA209019600051F4A5 /* ContentViewController.swift in Sources */,
 				7F6375BD209018520051F4A5 /* ViewController.swift in Sources */,
 				7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */,
+				7F35F0E920976F9200510BDD /* User.swift in Sources */,
 				7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */,
 				7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */,
 				7FC888B2209121E700B43914 /* PostTableViewCell.swift in Sources */,
 				7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */,
 				7F6375ED209019A60051F4A5 /* Post.swift in Sources */,
 				7F8CC11220916956005D8E2E /* PreviewViewController.swift in Sources */,
+				7F35F0E52097656900510BDD /* Tag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +652,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Ghost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -665,6 +676,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Ghost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -765,6 +777,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7PY3AJJXS2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -784,6 +800,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7PY3AJJXS2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
