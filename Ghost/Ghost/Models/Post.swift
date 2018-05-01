@@ -21,6 +21,16 @@ class Post {
   var updated_at:   Date = Date();
   var created_at:   Date = Date();
   var published_at: Date?;
+  var published: Bool! {
+    get {
+      return status == "published";
+    }
+  }
+  var new: Bool! {
+    get {
+      return id == ""
+    }
+  }
   
   class func all(success: @escaping ([Post]) -> Void) -> Void {
     let client = GhostRESTClient();
@@ -41,7 +51,7 @@ class Post {
     });
   }
   
-  func reload(success: @escaping () -> Void) -> Void {
+  func reload(success: @escaping () -> Void) {
     let client = GhostRESTClient();
     let params: Parameters = [
       "formats": "html, plaintext, mobiledoc"
@@ -54,15 +64,9 @@ class Post {
     });
   }
   
-  func isPublished() -> Bool {
-    return status == "published";
+  func save() {
+    
   }
-  
-  func isNew() -> Bool {
-    return id == "";
-  }
-  
-  init() { }
   
   init(json: NSDictionary) {
     let formatter = DateFormatter();

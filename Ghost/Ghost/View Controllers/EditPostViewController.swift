@@ -8,42 +8,75 @@
 
 import Foundation
 import UIKit
+import Down
+import WebKit
 
-class EditPostViewController: UIViewController {
+class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate {
+  @IBOutlet var bodyTextView: UITextView!;
+  @IBOutlet var previewWidthConstraint: NSLayoutConstraint!;
+  @IBOutlet var previewWebView: WKWebView!;
   var post: Post? {
     didSet {
       post?.reload {
-        self.populatePostData();
+        self.populatePostData()
+        self.renderPreview()
       }
     }
-  }
-  @IBOutlet var cancelButton: UIButton!;
-  @IBOutlet var titleTextField: UITextField!;
-  @IBOutlet var bodyTextView: UITextView!;
-  @IBOutlet var bodyTextViewBottomConstraint: NSLayoutConstraint!;
-  
-//  override func viewWillAppear(_ animated: Bool) {
-//    super.viewWillAppear(animated);
-//    post?.reload {};
-//    populatePostData();
-//  }
-  
-  override func viewDidLoad() {    
-    bodyTextView.becomeFirstResponder();
   }
   
   func populatePostData() {
     if post == nil { return }
     
-    titleTextField.text = post!.title
+    self.title = post?.title
     bodyTextView.text = post!.markdown
   }
   
-  @IBAction func showPreview() {
-    performSegue(withIdentifier: "previewSegue", sender: self);
+  @IBAction func togglePreview() {
+    let currentWidth = previewWidthConstraint.constant;
+    var targetWidth: CGFloat = 0
+    
+    // this is a three-way toggle: zero (hidden), 1/3 width, full width
+    if currentWidth == 0 {
+      targetWidth = self.view.frame.width * 0.33
+    } else if currentWidth == self.view.frame.width {
+      targetWidth = 0
+    } else {
+      targetWidth = self.view.frame.width
+    }
+    
+    previewWidthConstraint.constant = targetWidth
+    self.loadViewIfNeeded()
+  }
+  
+  func renderPreview() {
+    let down = Down(markdownString: post!.markdown)
+    let html = try? down.toHTML()
+    previewWebView.loadHTMLString(html!, baseURL: URL(string: "http://foo"))
   }
   
   @IBAction func cancel() {
-    dismiss(animated: true, completion: nil);
+    self.bodyTextView.resignFirstResponder()
+    toggleMasterView()
+  }
+  
+  @IBAction func save() {
+    self.bodyTextView.resignFirstResponder()
+    post?.save()
+    toggleMasterView()
+  }
+  
+  // show/hide the master view
+  func toggleMasterView() {
+
+  }
+  
+  // #mark UITextViewDelegate
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    toggleMasterView()
+  }
+
+  func textViewDidChange(_ textView: UITextView) {
+    post?.markdown = textView.text
+    renderPreview()
   }
 }

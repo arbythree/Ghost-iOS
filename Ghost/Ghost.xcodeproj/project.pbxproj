@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F26E3A5209886E9001437FF /* GhostSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26E3A4209886E9001437FF /* GhostSplitViewController.swift */; };
+		7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */; };
 		7F35F0DE209764B000510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
 		7F35F0DF209764B900510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
 		7F35F0E0209764B900510BDD /* Down.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -16,6 +16,7 @@
 		7F35F0EB209770D300510BDD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0EA209770D300510BDD /* Alamofire.framework */; };
 		7F35F0EC209770DA00510BDD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0EA209770D300510BDD /* Alamofire.framework */; };
 		7F35F0ED209770DA00510BDD /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0EA209770D300510BDD /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F35F0EF2098CCB400510BDD /* GhostContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F35F0EE2098CCB400510BDD /* GhostContainerViewController.swift */; };
 		7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375BA209018520051F4A5 /* AppDelegate.swift */; };
 		7F6375BD209018520051F4A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375BC209018520051F4A5 /* ViewController.swift */; };
 		7F6375C0209018520051F4A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6375BE209018520051F4A5 /* Main.storyboard */; };
@@ -23,11 +24,10 @@
 		7F6375C5209018530051F4A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6375C3209018530051F4A5 /* LaunchScreen.storyboard */; };
 		7F6375D0209018540051F4A5 /* GhostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375CF209018540051F4A5 /* GhostTests.swift */; };
 		7F6375DB209018540051F4A5 /* GhostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375DA209018540051F4A5 /* GhostUITests.swift */; };
-		7F6375EA209019600051F4A5 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375E9209019600051F4A5 /* ContentViewController.swift */; };
+		7F6375EA209019600051F4A5 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375E9209019600051F4A5 /* PostListViewController.swift */; };
 		7F6375ED209019A60051F4A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375EC209019A60051F4A5 /* Post.swift */; };
 		7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375F92090AAEA0051F4A5 /* TabBarController.swift */; };
 		7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */; };
-		7F8CC11220916956005D8E2E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CC11120916956005D8E2E /* PreviewViewController.swift */; };
 		7F8CC11420916B84005D8E2E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8CC11320916B83005D8E2E /* WebKit.framework */; };
 		7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A42090CE2200B43914 /* GhostRESTClient.swift */; };
 		7FC888A72090DEC300B43914 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A62090DEC300B43914 /* LoginViewController.swift */; };
@@ -93,11 +93,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7F26E3A4209886E9001437FF /* GhostSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostSplitViewController.swift; sourceTree = "<group>"; };
+		7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostBaseDetailViewController.swift; sourceTree = "<group>"; };
 		7F35F0DD209764B000510BDD /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
 		7F35F0E42097656900510BDD /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		7F35F0E820976F9200510BDD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7F35F0EA209770D300510BDD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		7F35F0EE2098CCB400510BDD /* GhostContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostContainerViewController.swift; sourceTree = "<group>"; };
 		7F6375B7209018520051F4A5 /* Ghost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ghost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6375BA209018520051F4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6375BC209018520051F4A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,11 +112,10 @@
 		7F6375D6209018540051F4A5 /* GhostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6375DA209018540051F4A5 /* GhostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostUITests.swift; sourceTree = "<group>"; };
 		7F6375DC209018540051F4A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F6375E9209019600051F4A5 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		7F6375E9209019600051F4A5 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		7F6375EC209019A60051F4A5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		7F6375F92090AAEA0051F4A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
-		7F8CC11120916956005D8E2E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		7F8CC11320916B83005D8E2E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		7FC888A42090CE2200B43914 /* GhostRESTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostRESTClient.swift; sourceTree = "<group>"; };
 		7FC888A62090DEC300B43914 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -193,12 +193,12 @@
 		7F6375B9209018520051F4A5 /* Ghost */ = {
 			isa = PBXGroup;
 			children = (
+				7F6375BE209018520051F4A5 /* Main.storyboard */,
 				7FC888B0209121CB00B43914 /* TableView Cells */,
 				7F6375EB2090198C0051F4A5 /* Models */,
 				7F6375E8209019270051F4A5 /* View Controllers */,
 				7F6375BA209018520051F4A5 /* AppDelegate.swift */,
 				7F6375BC209018520051F4A5 /* ViewController.swift */,
-				7F6375BE209018520051F4A5 /* Main.storyboard */,
 				7F6375C1209018530051F4A5 /* Assets.xcassets */,
 				7F6375C3209018530051F4A5 /* LaunchScreen.storyboard */,
 				7F6375C6209018530051F4A5 /* Info.plist */,
@@ -227,13 +227,13 @@
 		7F6375E8209019270051F4A5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7F6375E9209019600051F4A5 /* ContentViewController.swift */,
+				7F6375E9209019600051F4A5 /* PostListViewController.swift */,
+				7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */,
 				7F6375F92090AAEA0051F4A5 /* TabBarController.swift */,
 				7FC888A62090DEC300B43914 /* LoginViewController.swift */,
 				7FC888AE20910BE700B43914 /* MoreViewController.swift */,
-				7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */,
-				7F8CC11120916956005D8E2E /* PreviewViewController.swift */,
-				7F26E3A4209886E9001437FF /* GhostSplitViewController.swift */,
+				7F35F0EE2098CCB400510BDD /* GhostContainerViewController.swift */,
+				7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -443,19 +443,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FC888AF20910BE700B43914 /* MoreViewController.swift in Sources */,
+				7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */,
 				7FC888A72090DEC300B43914 /* LoginViewController.swift in Sources */,
 				7FC888A92090E0B000B43914 /* AuthenticationManager.swift in Sources */,
-				7F6375EA209019600051F4A5 /* ContentViewController.swift in Sources */,
-				7F26E3A5209886E9001437FF /* GhostSplitViewController.swift in Sources */,
+				7F6375EA209019600051F4A5 /* PostListViewController.swift in Sources */,
 				7F6375BD209018520051F4A5 /* ViewController.swift in Sources */,
 				7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */,
 				7F35F0E920976F9200510BDD /* User.swift in Sources */,
+				7F35F0EF2098CCB400510BDD /* GhostContainerViewController.swift in Sources */,
 				7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */,
 				7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */,
 				7FC888B2209121E700B43914 /* PostTableViewCell.swift in Sources */,
 				7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */,
 				7F6375ED209019A60051F4A5 /* Post.swift in Sources */,
-				7F8CC11220916956005D8E2E /* PreviewViewController.swift in Sources */,
 				7F35F0E52097656900510BDD /* Tag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
