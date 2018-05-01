@@ -27,7 +27,7 @@ class Post {
     let params: Parameters = [
       "status" : "all",
       "include" : "author, tags",
-      "fields" : "id, title, status, author, tags"
+//      "fields" : "id, title, status, author, tags"
     ];
     
     client.getJSON(path: "/posts/", parameters: params, completionHandler: { responseJSON in
@@ -41,7 +41,7 @@ class Post {
     });
   }
   
-  func reload(success: () -> Void) -> Void {
+  func reload(success: @escaping () -> Void) -> Void {
     let client = GhostRESTClient();
     let params: Parameters = [
       "formats": "html, plaintext, mobiledoc"
@@ -50,6 +50,7 @@ class Post {
       let postsJSON = responseJSON["posts"] as! NSArray;
       let postJSON = postsJSON[0] as! NSDictionary;
       self.markdown = postJSON["plaintext"] as! String;
+      success();
     });
   }
   
