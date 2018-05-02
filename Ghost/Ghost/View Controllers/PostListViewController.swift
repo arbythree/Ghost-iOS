@@ -10,32 +10,34 @@ import Foundation
 import UIKit
 
 class PostListViewController: GhostBaseDetailViewController, UITableViewDelegate, UITableViewDataSource {
-  var posts: [Post] = [];
-  var selectedPost: Post?;
-  
-  @IBOutlet var tableView: UITableView!;
+  private var _posts: [Post] = [];
+  private var _selectedPost: Post?;
+  @IBOutlet weak var tableView: UITableView!;
   
   override func viewDidLoad() {
     Post.all(success: { posts in
-      self.posts = posts
+      self._posts = posts
       self.tableView.reloadData()
     })
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return posts.count
+    return _posts.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as! PostTableViewCell;
-    let post = posts[indexPath.row]
+    let post = _posts[indexPath.row]
     cell.post = post
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    selectedPost = posts[indexPath.row]
-    let editViewController = self.splitViewController?.viewControllers[1] as! EditPostViewController
-    editViewController.post = selectedPost
+    _selectedPost = _posts[indexPath.row]
+    containerViewController.editPostViewController.post = _selectedPost
+  }
+  
+  @IBAction func toggleSettings() {
+    self.containerViewController.toggleSideMenu()
   }
 }

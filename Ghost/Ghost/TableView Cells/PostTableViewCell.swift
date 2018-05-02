@@ -26,10 +26,12 @@ class PostTableViewCell: UITableViewCell {
       }
     }
   }
-  @IBOutlet var titleLabel:  UILabel!;
-  @IBOutlet var authorLabel: UILabel!;
-  @IBOutlet var statusBadgeWidthConstraint: NSLayoutConstraint!;
-  @IBOutlet var authorLabelPaddingConstraint: NSLayoutConstraint!;
+  @IBOutlet weak var titleLabel:  UILabel!
+  @IBOutlet weak var authorLabel: UILabel!
+  @IBOutlet weak var ageLabel: UILabel!
+  @IBOutlet weak var statusBadgeWidthConstraint: NSLayoutConstraint!
+  @IBOutlet weak var authorLabelPaddingConstraint: NSLayoutConstraint!
+  
 
   override func layoutSubviews() {
     super.layoutSubviews()

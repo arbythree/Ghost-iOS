@@ -12,9 +12,11 @@ import Down
 import WebKit
 
 class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate {
-  @IBOutlet var bodyTextView: UITextView!;
-  @IBOutlet var previewWidthConstraint: NSLayoutConstraint!;
-  @IBOutlet var previewWebView: WKWebView!;
+  @IBOutlet weak var bodyTextView: UITextView!
+  @IBOutlet weak var previewWidthConstraint: NSLayoutConstraint!
+  @IBOutlet weak var previewWebView: WKWebView!
+  @IBOutlet weak var navigationBar: UINavigationBar!
+  
   var post: Post? {
     didSet {
       post?.reload {
@@ -26,8 +28,7 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate 
   
   func populatePostData() {
     if post == nil { return }
-    
-    self.title = post?.title
+    self.navigationBar.topItem?.title = post?.title
     bodyTextView.text = post!.markdown
   }
   

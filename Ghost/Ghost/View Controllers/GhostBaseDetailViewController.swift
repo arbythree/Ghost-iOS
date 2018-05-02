@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 class GhostBaseDetailViewController: UIViewController {
-  func containerViewController() -> GhostContainerViewController {
-    return self.parent!.parent! as! GhostContainerViewController
+  var containerViewController: GhostContainerViewController {
+    get {
+      return self.parent!.parent! as! GhostContainerViewController
+    }
   }
 }
 

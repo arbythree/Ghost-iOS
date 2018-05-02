@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */; };
+		7F26E3A720991767001437FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26E3A620991767001437FF /* Constants.swift */; };
 		7F35F0DE209764B000510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
 		7F35F0DF209764B900510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
 		7F35F0E0209764B900510BDD /* Down.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -94,6 +95,7 @@
 
 /* Begin PBXFileReference section */
 		7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostBaseDetailViewController.swift; sourceTree = "<group>"; };
+		7F26E3A620991767001437FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7F35F0DD209764B000510BDD /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
 		7F35F0E42097656900510BDD /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		7F35F0E820976F9200510BDD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				7F6375C1209018530051F4A5 /* Assets.xcassets */,
 				7F6375C3209018530051F4A5 /* LaunchScreen.storyboard */,
 				7F6375C6209018530051F4A5 /* Info.plist */,
+				7F26E3A620991767001437FF /* Constants.swift */,
 			);
 			path = Ghost;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				7F6375EA209019600051F4A5 /* PostListViewController.swift in Sources */,
 				7F6375BD209018520051F4A5 /* ViewController.swift in Sources */,
 				7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */,
+				7F26E3A720991767001437FF /* Constants.swift in Sources */,
 				7F35F0E920976F9200510BDD /* User.swift in Sources */,
 				7F35F0EF2098CCB400510BDD /* GhostContainerViewController.swift in Sources */,
 				7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */,
