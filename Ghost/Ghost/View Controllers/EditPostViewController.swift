@@ -26,10 +26,19 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate 
     }
   }
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    containerViewController.editPostViewController = self
+  }
+  
   func populatePostData() {
     if post == nil { return }
-    self.navigationBar.topItem?.title = post?.title
+    self.title = post?.title
     bodyTextView.text = post!.markdown
+  }
+  
+  @IBAction func toggleInfo() {
+    self.containerViewController.toggleInfo()
   }
   
   @IBAction func togglePreview() {

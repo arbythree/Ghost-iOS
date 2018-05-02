@@ -15,6 +15,8 @@ class GhostRESTClient {
   }
   
   func getJSON(path: String, parameters: Parameters, completionHandler: @escaping (_ : NSDictionary) -> Void) {
+//    print(path)
+//    print(parameters)
     let mgr = AuthenticationManager.sharedManager;
     let headers: HTTPHeaders = [
         "Authorization": "Bearer \(mgr.token!)"

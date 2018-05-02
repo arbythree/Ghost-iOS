@@ -37,7 +37,6 @@ class Post {
     let params: Parameters = [
       "status" : "all",
       "include" : "author, tags",
-//      "fields" : "id, title, status, author, tags"
     ];
     
     client.getJSON(path: "/posts/", parameters: params, completionHandler: { responseJSON in

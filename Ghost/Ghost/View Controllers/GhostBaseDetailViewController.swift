@@ -12,7 +12,13 @@ import UIKit
 class GhostBaseDetailViewController: UIViewController {
   var containerViewController: GhostContainerViewController {
     get {
-      return self.parent!.parent! as! GhostContainerViewController
+      var candidate = self.parent
+      while true {
+        if let result = candidate as? GhostContainerViewController {
+          return result
+        }
+        candidate = candidate!.parent
+      }
     }
   }
 }

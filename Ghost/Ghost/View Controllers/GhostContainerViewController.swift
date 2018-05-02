@@ -14,6 +14,7 @@ class GhostContainerViewController: UIViewController {
   @IBOutlet weak var postListWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var editPaneWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var previewWidthConstraint:  NSLayoutConstraint!
+  @IBOutlet weak var infoWidthConstraint:     NSLayoutConstraint!
   @IBOutlet weak var sideMenuContainer: UIView!
   @IBOutlet weak var postListContainer: UIView!
   @IBOutlet weak var editPaneContainer: UIView!
@@ -21,12 +22,7 @@ class GhostContainerViewController: UIViewController {
   private var _sideMenuWidth: CGFloat = 0
   private var _postListWidth: CGFloat = 0
   private var _editing = false
-  
-  var editPostViewController: EditPostViewController {
-    get {
-      return self.childViewControllers[2] as! EditPostViewController
-    }
-  }
+  @IBOutlet weak var editPostViewController: EditPostViewController?
   
   @IBAction func toggleSideMenu() {
     let targetWidth: CGFloat = sideMenuWidthConstraint.constant == 0 ? 240 : 0
@@ -38,23 +34,36 @@ class GhostContainerViewController: UIViewController {
     previewWidthConstraint.constant = targetWidth
   }
   
+  func toggleInfo() {
+    
+  }
+  
+  @IBAction func enterFullEditMode() {
+    storePanelDimensions()
+    self.sideMenuWidthConstraint.constant = 0
+    self.postListWidthConstraint.constant = 0
+  }
+  
   @IBAction func toggleEditMode() {
+    var targetSideMenuWdith: CGFloat = 0
+    var targetPostListWidth: CGFloat = 0
+    storePanelDimensions()
+
     if _editing {
-      _editing = false
-      UIView.animate(withDuration: Constants.AnimationDuration, animations: {
-        self.sideMenuWidthConstraint.constant = self._sideMenuWidth
-        self.postListWidthConstraint.constant = self._postListWidth
-        self.view.layoutIfNeeded()
-      })
-    } else {
-      _editing = true
-      _sideMenuWidth = sideMenuWidthConstraint.constant
-      _postListWidth = postListWidthConstraint.constant
-      UIView.animate(withDuration: Constants.AnimationDuration, animations: {
-        self.sideMenuWidthConstraint.constant = 0
-        self.postListWidthConstraint.constant = 0
-        self.view.layoutIfNeeded()
-      })
+      targetSideMenuWdith = self._sideMenuWidth
+      targetPostListWidth = self._postListWidth
     }
+
+    UIView.animate(withDuration: Constants.AnimationDuration, animations: {
+      self.sideMenuWidthConstraint.constant = targetSideMenuWdith
+      self.postListWidthConstraint.constant = targetPostListWidth
+      self.view.layoutIfNeeded()
+    })
+    _editing = !_editing
+  }
+  
+  func storePanelDimensions() {
+    _sideMenuWidth = sideMenuWidthConstraint.constant
+    _postListWidth = postListWidthConstraint.constant
   }
 }

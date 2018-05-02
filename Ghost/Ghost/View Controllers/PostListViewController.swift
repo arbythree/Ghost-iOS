@@ -34,7 +34,7 @@ class PostListViewController: GhostBaseDetailViewController, UITableViewDelegate
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     _selectedPost = _posts[indexPath.row]
-    containerViewController.editPostViewController.post = _selectedPost
+    containerViewController.editPostViewController?.post = _selectedPost
   }
   
   @IBAction func toggleSettings() {
