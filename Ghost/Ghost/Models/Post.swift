@@ -42,8 +42,8 @@ class Post {
         .replacingOccurrences(of: "\\", with: "\\\\")
         .replacingOccurrences(of: "\"", with: "\\\"")
         .replacingOccurrences(of: "\n", with: "\\\n")
-        .replacingOccurrences(of: "\t", with: "\\\t")
-        .replacingOccurrences(of: "\r", with: "\\\r")
+//        .replacingOccurrences(of: "\t", with: "\\\t")
+//        .replacingOccurrences(of: "\r", with: "\\\r")
       
       return "{" +
         "  \"version\": \"0.3.1\"," +
@@ -55,6 +55,7 @@ class Post {
         "      \"markdown\": \"\(escapedMarkdown)\"" +
         "    }]" +
         "  ]," +
+        "  \"sections\": [[10, 0]]" +
       "}"
     }
   }

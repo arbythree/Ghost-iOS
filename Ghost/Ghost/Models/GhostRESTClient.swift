@@ -42,12 +42,14 @@ class GhostRESTClient {
     }
   }
   
-  func put(path: String, parameters: [String: Any], success: @escaping (String) -> Void, failure:() -> Void) -> Void {
+  func put(path: String, parameters: [String: Any], success: @escaping (NSDictionary) -> Void, failure: @escaping () -> Void) -> Void {
     Alamofire.request(fullURL(path: path), method: .put, parameters: parameters, headers: authorizationHeader()).responseJSON { response in
       let status = response.response?.statusCode;
       if (status == 200) {
-        //        let json = response.result.value as! NSDictionary;
-        success("")
+        let json = response.result.value as! NSDictionary;
+        success(json)
+      } else {
+        failure()
       }
     }
   }

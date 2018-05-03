@@ -12,6 +12,7 @@ class PostSerializer {
   class func serialize(post: Post) -> [String: Any] {
     var result: [String: Any] = [:]
     
+    result["id"]        = post.id
     result["title"]     = post.title
     result["mobiledoc"] = post.mobiledoc
     result["status"]    = post.status
