@@ -18,6 +18,10 @@
 		7F35F0EC209770DA00510BDD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0EA209770D300510BDD /* Alamofire.framework */; };
 		7F35F0ED209770DA00510BDD /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0EA209770D300510BDD /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F35F0EF2098CCB400510BDD /* GhostContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F35F0EE2098CCB400510BDD /* GhostContainerViewController.swift */; };
+		7F3BB8E7209AA2B2009E6EE7 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BB8E6209AA2B2009E6EE7 /* Upload.swift */; };
+		7F3BB8E9209AA3A8009E6EE7 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BB8E8209AA3A8009E6EE7 /* PersistenceManager.swift */; };
+		7F3BB8EB209B309F009E6EE7 /* PostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BB8EA209B309F009E6EE7 /* PostInfoViewController.swift */; };
+		7F3BB8EE209B3EAB009E6EE7 /* PostSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BB8ED209B3EAB009E6EE7 /* PostSerializer.swift */; };
 		7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375BA209018520051F4A5 /* AppDelegate.swift */; };
 		7F6375BD209018520051F4A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375BC209018520051F4A5 /* ViewController.swift */; };
 		7F6375C0209018520051F4A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6375BE209018520051F4A5 /* Main.storyboard */; };
@@ -101,6 +105,10 @@
 		7F35F0E820976F9200510BDD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7F35F0EA209770D300510BDD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7F35F0EE2098CCB400510BDD /* GhostContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostContainerViewController.swift; sourceTree = "<group>"; };
+		7F3BB8E6209AA2B2009E6EE7 /* Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
+		7F3BB8E8209AA3A8009E6EE7 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		7F3BB8EA209B309F009E6EE7 /* PostInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoViewController.swift; sourceTree = "<group>"; };
+		7F3BB8ED209B3EAB009E6EE7 /* PostSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSerializer.swift; sourceTree = "<group>"; };
 		7F6375B7209018520051F4A5 /* Ghost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ghost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6375BA209018520051F4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6375BC209018520051F4A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +177,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F3BB8EC209B3E9E009E6EE7 /* Serializers */ = {
+			isa = PBXGroup;
+			children = (
+				7F3BB8ED209B3EAB009E6EE7 /* PostSerializer.swift */,
+			);
+			path = Serializers;
+			sourceTree = "<group>";
+		};
 		7F6375AE209018520051F4A5 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +213,7 @@
 			children = (
 				7F6375BE209018520051F4A5 /* Main.storyboard */,
 				7FC888B0209121CB00B43914 /* TableView Cells */,
+				7F3BB8EC209B3E9E009E6EE7 /* Serializers */,
 				7F6375EB2090198C0051F4A5 /* Models */,
 				7F6375E8209019270051F4A5 /* View Controllers */,
 				7F6375BA209018520051F4A5 /* AppDelegate.swift */,
@@ -237,6 +254,7 @@
 				7FC888AE20910BE700B43914 /* MoreViewController.swift */,
 				7F35F0EE2098CCB400510BDD /* GhostContainerViewController.swift */,
 				7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */,
+				7F3BB8EA209B309F009E6EE7 /* PostInfoViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -249,6 +267,8 @@
 				7FC888A42090CE2200B43914 /* GhostRESTClient.swift */,
 				7FC888A82090E0B000B43914 /* AuthenticationManager.swift */,
 				7F35F0E820976F9200510BDD /* User.swift */,
+				7F3BB8E6209AA2B2009E6EE7 /* Upload.swift */,
+				7F3BB8E8209AA3A8009E6EE7 /* PersistenceManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -445,8 +465,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F3BB8EB209B309F009E6EE7 /* PostInfoViewController.swift in Sources */,
 				7FC888AF20910BE700B43914 /* MoreViewController.swift in Sources */,
 				7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */,
+				7F3BB8EE209B3EAB009E6EE7 /* PostSerializer.swift in Sources */,
 				7FC888A72090DEC300B43914 /* LoginViewController.swift in Sources */,
 				7FC888A92090E0B000B43914 /* AuthenticationManager.swift in Sources */,
 				7F6375EA209019600051F4A5 /* PostListViewController.swift in Sources */,
@@ -457,8 +479,10 @@
 				7F35F0EF2098CCB400510BDD /* GhostContainerViewController.swift in Sources */,
 				7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */,
 				7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */,
+				7F3BB8E7209AA2B2009E6EE7 /* Upload.swift in Sources */,
 				7FC888B2209121E700B43914 /* PostTableViewCell.swift in Sources */,
 				7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */,
+				7F3BB8E9209AA3A8009E6EE7 /* PersistenceManager.swift in Sources */,
 				7F6375ED209019A60051F4A5 /* Post.swift in Sources */,
 				7F35F0E52097656900510BDD /* Tag.swift in Sources */,
 			);

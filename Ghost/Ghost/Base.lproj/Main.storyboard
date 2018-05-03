@@ -39,23 +39,24 @@
             </objects>
             <point key="canvasLocation" x="-3908" y="-2313"/>
         </scene>
-        <!--View Controller-->
+        <!--Post Info View Controller-->
         <scene sceneID="MaT-6m-M7l">
             <objects>
-                <viewController id="Dlz-Zt-c4L" sceneMemberID="viewController">
+                <viewController id="Dlz-Zt-c4L" customClass="PostInfoViewController" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Up8-TT-9eu">
-                        <rect key="frame" x="0.0" y="0.0" width="10" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zhx-cf-cai">
-                                <rect key="frame" x="0.0" y="0.0" width="316" height="768"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Km-Tk-Bs5">
+                                <rect key="frame" x="16" y="77" width="168" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                                <state key="normal" title="Update">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="save" destination="Dlz-Zt-c4L" eventType="touchUpInside" id="g55-Y6-Xre"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="p7H-hM-CZv"/>
@@ -63,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kam-vl-TJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1531.0546875" y="-2199.21875"/>
+            <point key="canvasLocation" x="-1976.3671874999998" y="-2204.6875"/>
         </scene>
         <!--Post List View Controller-->
         <scene sceneID="ntR-yI-NVh">
@@ -198,11 +199,11 @@
             <objects>
                 <viewController id="Evf-2w-lQ0" customClass="EditPostViewController" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vch-y1-vsO">
-                        <rect key="frame" x="0.0" y="0.0" width="636" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="446" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="always" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cGE-xP-lQk">
-                                <rect key="frame" x="30" y="87" width="576" height="681"/>
+                                <rect key="frame" x="30" y="87" width="386" height="681"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="30" maxX="0.0" maxY="30"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -213,7 +214,7 @@
                                 </connections>
                             </textView>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xEo-jx-jN6">
-                                <rect key="frame" x="636" y="64" width="0.0" height="704"/>
+                                <rect key="frame" x="446" y="64" width="0.0" height="704"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="dZQ-XT-Xwx"/>
@@ -238,7 +239,11 @@
                         <viewLayoutGuide key="safeArea" id="ZDI-TC-oeg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Post" id="iPp-bd-VC6">
-                        <barButtonItem key="rightBarButtonItem" title="Info" id="HRT-bQ-Wqu"/>
+                        <barButtonItem key="rightBarButtonItem" title="Info" id="HRT-bQ-Wqu">
+                            <connections>
+                                <action selector="toggleInfo" destination="Evf-2w-lQ0" id="d94-Ms-FUG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="cGE-xP-lQk" id="db1-mz-IjV"/>
@@ -277,15 +282,15 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="598-Dj-OAs">
-                                <rect key="frame" x="380" y="0.0" width="636" height="768"/>
+                                <rect key="frame" x="380" y="0.0" width="446" height="768"/>
                                 <connections>
                                     <segue destination="B3o-mY-Xkw" kind="embed" id="ed8-4Y-Wn4"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hzq-Y5-JXH">
-                                <rect key="frame" x="1014" y="0.0" width="10" height="768"/>
+                                <rect key="frame" x="824" y="0.0" width="200" height="768"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="10" id="o34-NU-vAQ"/>
+                                    <constraint firstAttribute="width" constant="200" id="o34-NU-vAQ"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="Dlz-Zt-c4L" kind="embed" id="vhu-ja-w6c"/>
@@ -416,7 +421,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B3o-mY-Xkw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qw0-zY-Qlo">
-                        <rect key="frame" x="0.0" y="20" width="636" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="446" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

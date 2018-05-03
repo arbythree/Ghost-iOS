@@ -24,6 +24,7 @@ class GhostContainerViewController: UIViewController {
   private var _editing = false
   @IBOutlet weak var editPostViewController: EditPostViewController?
   
+  // show/hide the side menu on the far left
   @IBAction func toggleSideMenu() {
     let targetWidth: CGFloat = sideMenuWidthConstraint.constant == 0 ? 240 : 0
     sideMenuWidthConstraint.constant = targetWidth
@@ -34,8 +35,10 @@ class GhostContainerViewController: UIViewController {
     previewWidthConstraint.constant = targetWidth
   }
   
-  func toggleInfo() {
-    
+  // show/hide the Info panel on the far right
+  @IBAction func toggleInfo() {
+    let targetWidth: CGFloat = infoWidthConstraint.constant == 0 ? 210 : 0
+    infoWidthConstraint.constant = targetWidth
   }
   
   @IBAction func enterFullEditMode() {

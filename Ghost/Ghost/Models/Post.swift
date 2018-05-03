@@ -26,10 +26,41 @@ class Post {
       return status == "published";
     }
   }
+  
   var new: Bool! {
     get {
       return id == ""
     }
+  }
+  
+  //
+  // liberal inspiration from https://github.com/TryGhost/Ghost-Android/blob/8f31cefbf3caed339cf00726872d131eb2ddefa2/app/src/main/java/me/vickychijwani/spectre/network/GhostApiUtils.java
+  //
+  var mobiledoc: String {
+    get {
+      let escapedMarkdown = markdown
+        .replacingOccurrences(of: "\\", with: "\\\\")
+        .replacingOccurrences(of: "\"", with: "\\\"")
+        .replacingOccurrences(of: "\n", with: "\\\n")
+        .replacingOccurrences(of: "\t", with: "\\\t")
+        .replacingOccurrences(of: "\r", with: "\\\r")
+      
+      return "{" +
+        "  \"version\": \"0.3.1\"," +
+        "  \"markups\": []," +
+        "  \"atoms\": []," +
+        "  \"cards\": [" +
+        "    [\"card-markdown\", {" +
+        "      \"cardName\": \"card-markdown\"," +
+        "      \"markdown\": \"\(escapedMarkdown)\"" +
+        "    }]" +
+        "  ]," +
+      "}"
+    }
+  }
+  
+  init(json: NSDictionary) {
+    PostSerializer.populateFromJSON(post: self, json: json)
   }
   
   class func all(success: @escaping ([Post]) -> Void) -> Void {
@@ -51,10 +82,8 @@ class Post {
   }
   
   func reload(success: @escaping () -> Void) {
-    let client = GhostRESTClient();
-    let params: Parameters = [
-      "formats": "html, plaintext, mobiledoc"
-    ];
+    let client = GhostRESTClient()
+    let params: Parameters = [ "formats": "html, plaintext, mobiledoc" ]
     client.getJSON(path: "/posts/\(id)/", parameters: params, completionHandler: { responseJSON in
       let postsJSON = responseJSON["posts"] as! NSArray;
       let postJSON = postsJSON[0] as! NSDictionary;
@@ -64,40 +93,6 @@ class Post {
   }
   
   func save() {
-    
-  }
-  
-  init(json: NSDictionary) {
-    let formatter = DateFormatter();
-    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-    
-    id     = json["id"]     as! String;
-    title  = json["title"]  as! String;
-    status = json["status"] as! String;
-//    markdown = json["plaintext"] as! String;
-    
-    let authorJSON = json["author"] as! NSDictionary;
-    author = authorJSON["name"] as! String;
-    
-    var tagNames: [String] = [];
-    let tagsJSON = json["tags"] as! [[String: Any]];
-    for tagJSON in tagsJSON {
-      tagNames.append(tagJSON["name"] as! String);
-    }
-    tags = tagNames.joined(separator: ", ")
-    
-    // pull dates
-    let ua = json["updated_at"]   as! String;
-    updated_at = formatter.date(from: ua)!;
-    
-    let ca = json["created_at"]   as! String;
-    created_at = formatter.date(from: ca)!;
-  
-    let pa = json["published_at"];
-    if pa is NSNull {
-      
-    } else {
-      published_at = formatter.date(from: pa as! String)!;
-    }
+    PostSerializer.save(post: self)
   }
 }

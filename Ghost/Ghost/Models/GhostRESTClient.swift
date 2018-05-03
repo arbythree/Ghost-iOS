@@ -14,15 +14,16 @@ class GhostRESTClient {
     return "https://theojisan.com/ghost/api/v0.1\(path)";
   }
   
-  func getJSON(path: String, parameters: Parameters, completionHandler: @escaping (_ : NSDictionary) -> Void) {
-//    print(path)
-//    print(parameters)
+  func authorizationHeader() -> HTTPHeaders {
     let mgr = AuthenticationManager.sharedManager;
     let headers: HTTPHeaders = [
-        "Authorization": "Bearer \(mgr.token!)"
+      "Authorization": "Bearer \(mgr.token!)"
     ]
-    
-    Alamofire.request(fullURL(path: path), parameters: parameters, headers: headers).responseJSON { response in
+    return headers
+  }
+  
+  func getJSON(path: String, parameters: [String: Any], completionHandler: @escaping (_ : NSDictionary) -> Void) {
+    Alamofire.request(fullURL(path: path), parameters: parameters, headers: authorizationHeader()).responseJSON { response in
       let status = response.response?.statusCode;
       if (status == 200) {
         let json = response.result.value as! NSDictionary;
@@ -31,12 +32,22 @@ class GhostRESTClient {
     }
   }
   
-  func post(path: String, params: [String: String], success: @escaping (String) -> Void, failure:() -> Void) -> Void {
-    Alamofire.request(fullURL(path: path), method: .post, parameters: params).responseJSON { response in
+  func post(path: String, parameters: [String: Any], success: @escaping (String) -> Void, failure:() -> Void) -> Void {
+    Alamofire.request(fullURL(path: path), method: .post, parameters: parameters, headers: authorizationHeader()).responseJSON { response in
       let status = response.response?.statusCode;
       if (status == 200) {
 //        let json = response.result.value as! NSDictionary;
-//        success("abc");
+        success("")
+      }
+    }
+  }
+  
+  func put(path: String, parameters: [String: Any], success: @escaping (String) -> Void, failure:() -> Void) -> Void {
+    Alamofire.request(fullURL(path: path), method: .put, parameters: parameters, headers: authorizationHeader()).responseJSON { response in
+      let status = response.response?.statusCode;
+      if (status == 200) {
+        //        let json = response.result.value as! NSDictionary;
+        success("")
       }
     }
   }

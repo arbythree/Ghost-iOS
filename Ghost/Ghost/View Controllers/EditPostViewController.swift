@@ -26,6 +26,11 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate 
     }
   }
   
+  @IBAction func toggleInfo() {
+    containerViewController.toggleInfo()
+  }
+  
+  // tell the container where to find us
   override func viewDidLoad() {
     super.viewDidLoad()
     containerViewController.editPostViewController = self
@@ -35,10 +40,6 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate 
     if post == nil { return }
     self.title = post?.title
     bodyTextView.text = post!.markdown
-  }
-  
-  @IBAction func toggleInfo() {
-    self.containerViewController.toggleInfo()
   }
   
   @IBAction func togglePreview() {
@@ -59,9 +60,9 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate 
   }
   
   func renderPreview() {
-    let down = Down(markdownString: post!.markdown)
-    let html = try? down.toHTML()
-    previewWebView.loadHTMLString(html!, baseURL: URL(string: "http://foo"))
+//    let down = Down(markdownString: post!.markdown)
+//    let html = try? down.toHTML()
+//    previewWebView.loadHTMLString(html!, baseURL: URL(string: "http://foo"))
   }
   
   @IBAction func cancel() {
@@ -70,9 +71,9 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate 
   }
   
   @IBAction func save() {
-    self.bodyTextView.resignFirstResponder()
+    bodyTextView.resignFirstResponder()
+    post?.markdown = bodyTextView.text
     post?.save()
-    toggleMasterView()
   }
   
   // show/hide the master view
