@@ -335,6 +335,7 @@
                     <connections>
                         <outlet property="infoWidthConstraint" destination="o34-NU-vAQ" id="6xJ-ij-HQN"/>
                         <outlet property="postListWidthConstraint" destination="GNj-9J-39b" id="rzI-a1-U6e"/>
+                        <outlet property="previewWidthConstraint" destination="OwW-qc-iKO" id="CRe-Y7-Lm4"/>
                         <outlet property="sideMenuWidthConstraint" destination="HLu-0t-Odr" id="x1y-eu-gsz"/>
                     </connections>
                 </viewController>
