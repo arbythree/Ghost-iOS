@@ -239,6 +239,11 @@
                         <viewLayoutGuide key="safeArea" id="ZDI-TC-oeg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Post" id="iPp-bd-VC6">
+                        <barButtonItem key="leftBarButtonItem" title="Full Screen" id="hZT-kI-DgP">
+                            <connections>
+                                <action selector="toggleFullScreen" destination="Evf-2w-lQ0" id="9Cd-id-QAF"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Info" id="HRT-bQ-Wqu">
                             <connections>
                                 <action selector="toggleInfo" destination="Evf-2w-lQ0" id="d94-Ms-FUG"/>
@@ -296,10 +301,21 @@
                                     <segue destination="Dlz-Zt-c4L" kind="embed" id="vhu-ja-w6c"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmO-1W-2K3">
+                                <rect key="frame" x="732" y="77" width="292" height="498"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="292" id="OwW-qc-iKO"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="g4h-G1-qV7" kind="embed" id="5ms-kM-mqT"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Ovo-DL-A4n" firstAttribute="bottom" secondItem="hmO-1W-2K3" secondAttribute="bottom" constant="193" id="0FH-se-FIg"/>
                             <constraint firstItem="GmM-De-644" firstAttribute="top" secondItem="f8P-6Q-teW" secondAttribute="top" id="2B0-n2-DxR"/>
+                            <constraint firstItem="hmO-1W-2K3" firstAttribute="trailing" secondItem="Ovo-DL-A4n" secondAttribute="trailing" id="2kw-zY-49n"/>
                             <constraint firstItem="Hzq-Y5-JXH" firstAttribute="bottom" secondItem="Ovo-DL-A4n" secondAttribute="bottom" id="3Ja-vO-ijw"/>
                             <constraint firstItem="598-Dj-OAs" firstAttribute="top" secondItem="f8P-6Q-teW" secondAttribute="top" id="65O-wZ-cnI"/>
                             <constraint firstItem="GmM-De-644" firstAttribute="leading" secondItem="Ovo-DL-A4n" secondAttribute="leading" id="8Hc-XS-NaH"/>
@@ -312,11 +328,13 @@
                             <constraint firstItem="Ovo-DL-A4n" firstAttribute="bottom" secondItem="ME4-Id-I5G" secondAttribute="bottom" id="ieL-51-BwY"/>
                             <constraint firstItem="ME4-Id-I5G" firstAttribute="leading" secondItem="GmM-De-644" secondAttribute="trailing" id="nQK-fD-OJt"/>
                             <constraint firstItem="Hzq-Y5-JXH" firstAttribute="top" secondItem="f8P-6Q-teW" secondAttribute="top" id="w2g-ly-aAj"/>
+                            <constraint firstItem="hmO-1W-2K3" firstAttribute="top" secondItem="Ovo-DL-A4n" secondAttribute="top" constant="57" id="xRx-N7-7u8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ovo-DL-A4n"/>
                     </view>
                     <connections>
                         <outlet property="infoWidthConstraint" destination="o34-NU-vAQ" id="6xJ-ij-HQN"/>
+                        <outlet property="postListWidthConstraint" destination="GNj-9J-39b" id="rzI-a1-U6e"/>
                         <outlet property="sideMenuWidthConstraint" destination="HLu-0t-Odr" id="x1y-eu-gsz"/>
                     </connections>
                 </viewController>
@@ -432,6 +450,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmi-CA-q8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2813.0859375" y="-2187.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ysQ-SA-PQt">
+            <objects>
+                <viewController id="g4h-G1-qV7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jEK-rG-AGE">
+                        <rect key="frame" x="0.0" y="0.0" width="292" height="498"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j2R-oy-MER" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>

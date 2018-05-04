@@ -26,8 +26,14 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate 
     }
   }
   
+  // show hide the right-hand info panel
   @IBAction func toggleInfo() {
     containerViewController.toggleInfo()
+  }
+  
+  // show/hide the side menu and post list
+  @IBAction func toggleFullScreen() {
+    containerViewController.toggleFullEditMode()
   }
   
   // tell the container where to find us
@@ -66,24 +72,15 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate 
   }
   
   @IBAction func cancel() {
+    // TODO: confirm via actionsheet
+    bodyTextView.text = post?.markdown
     self.bodyTextView.resignFirstResponder()
-    toggleMasterView()
   }
   
   @IBAction func save() {
     bodyTextView.resignFirstResponder()
     post?.markdown = bodyTextView.text
     post?.save()
-  }
-  
-  // show/hide the master view
-  func toggleMasterView() {
-
-  }
-  
-  // #mark UITextViewDelegate
-  func textViewDidBeginEditing(_ textView: UITextView) {
-    toggleMasterView()
   }
 
   func textViewDidChange(_ textView: UITextView) {

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// class for persisting and rehydrating Post objects
 class PostSerializer {
   class func serialize(post: Post) -> [String: Any] {
     var result: [String: Any] = [:]
@@ -20,6 +21,9 @@ class PostSerializer {
     return result
   }
   
+  // this part of the Ghost API isn't documented
+  // I/Ray relied on the Android code base
+  // and inspecting XHR requests in the browser
   class func save(post: Post) {
     let client = GhostRESTClient()
     let serialized = PostSerializer.serialize(post: post)
@@ -37,6 +41,7 @@ class PostSerializer {
     )
   }
   
+  // given an existing Post object, populate its attributes from a JSON dictionary
   class func populateFromJSON(post: Post, json: NSDictionary) {
     let formatter = DateFormatter();
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
@@ -70,19 +75,3 @@ class PostSerializer {
     }
   }
 }
-
-
-//public PostStub(@NonNull Post post) {
-//  this.title = post.getTitle();
-//  this.slug = post.getSlug();
-//  this.status = post.getStatus();
-//  this.mobiledoc = post.getMobiledoc();
-//  this.tags = new ArrayList<>(post.getTags().size());
-//  for (Tag tag : post.getTags()) {
-//    this.tags.add(new TagStub(tag));
-//  }
-//  this.featureImage = post.getFeatureImage();
-//  this.featured = post.isFeatured();
-//  this.page = post.isPage();
-//  this.customExcerpt = post.getCustomExcerpt();
-//}

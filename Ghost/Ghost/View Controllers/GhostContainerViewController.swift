@@ -22,6 +22,7 @@ class GhostContainerViewController: UIViewController {
   private var _sideMenuWidth: CGFloat = 0
   private var _postListWidth: CGFloat = 0
   private var _editing = false
+  private var _fullEditMode = false
   @IBOutlet weak var editPostViewController: EditPostViewController?
   
   // show/hide the side menu on the far left
@@ -41,24 +42,31 @@ class GhostContainerViewController: UIViewController {
     infoWidthConstraint.constant = targetWidth
   }
   
-  @IBAction func enterFullEditMode() {
-    storePanelDimensions()
-    self.sideMenuWidthConstraint.constant = 0
-    self.postListWidthConstraint.constant = 0
+  func toggleFullEditMode() {
+    if _fullEditMode {
+      sideMenuWidthConstraint.constant = _sideMenuWidth
+      postListWidthConstraint.constant = _postListWidth
+    } else {
+      storePanelDimensions()
+      sideMenuWidthConstraint.constant = 0
+      postListWidthConstraint.constant = 0
+    }
+    
+    _fullEditMode = !_fullEditMode
   }
   
   @IBAction func toggleEditMode() {
-    var targetSideMenuWdith: CGFloat = 0
+    var targetSideMenuWidth: CGFloat = 0
     var targetPostListWidth: CGFloat = 0
     storePanelDimensions()
 
     if _editing {
-      targetSideMenuWdith = self._sideMenuWidth
+      targetSideMenuWidth = self._sideMenuWidth
       targetPostListWidth = self._postListWidth
     }
 
     UIView.animate(withDuration: Constants.AnimationDuration, animations: {
-      self.sideMenuWidthConstraint.constant = targetSideMenuWdith
+      self.sideMenuWidthConstraint.constant = targetSideMenuWidth
       self.postListWidthConstraint.constant = targetPostListWidth
       self.view.layoutIfNeeded()
     })
