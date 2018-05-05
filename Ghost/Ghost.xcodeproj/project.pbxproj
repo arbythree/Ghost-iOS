@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */; };
+		7F2689BA209CE14B00D82752 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2689B9209CE14B00D82752 /* PreviewViewController.swift */; };
 		7F26E3A720991767001437FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26E3A620991767001437FF /* Constants.swift */; };
 		7F35F0DE209764B000510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
 		7F35F0DF209764B900510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
@@ -99,6 +100,7 @@
 
 /* Begin PBXFileReference section */
 		7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostBaseDetailViewController.swift; sourceTree = "<group>"; };
+		7F2689B9209CE14B00D82752 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		7F26E3A620991767001437FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7F35F0DD209764B000510BDD /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
 		7F35F0E42097656900510BDD /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -247,14 +249,15 @@
 		7F6375E8209019270051F4A5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7F35F0EE2098CCB400510BDD /* GhostContainerViewController.swift */,
 				7F6375E9209019600051F4A5 /* PostListViewController.swift */,
 				7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */,
 				7F6375F92090AAEA0051F4A5 /* TabBarController.swift */,
 				7FC888A62090DEC300B43914 /* LoginViewController.swift */,
 				7FC888AE20910BE700B43914 /* MoreViewController.swift */,
-				7F35F0EE2098CCB400510BDD /* GhostContainerViewController.swift */,
-				7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */,
 				7F3BB8EA209B309F009E6EE7 /* PostInfoViewController.swift */,
+				7F2689B9209CE14B00D82752 /* PreviewViewController.swift */,
+				7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 			files = (
 				7F3BB8EB209B309F009E6EE7 /* PostInfoViewController.swift in Sources */,
 				7FC888AF20910BE700B43914 /* MoreViewController.swift in Sources */,
+				7F2689BA209CE14B00D82752 /* PreviewViewController.swift in Sources */,
 				7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */,
 				7F3BB8EE209B3EAB009E6EE7 /* PostSerializer.swift in Sources */,
 				7FC888A72090DEC300B43914 /* LoginViewController.swift in Sources */,

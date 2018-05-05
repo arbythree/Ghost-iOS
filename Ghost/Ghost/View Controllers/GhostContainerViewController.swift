@@ -23,7 +23,8 @@ class GhostContainerViewController: UIViewController {
   private var _postListWidth: CGFloat = 0
   private var _editing = false
   private var _fullEditMode = false
-  @IBOutlet weak var editPostViewController: EditPostViewController?
+  var editPostViewController: EditPostViewController?
+  var previewViewController: PreviewViewController?
   
   // show/hide the side menu on the far left
   @IBAction func toggleSideMenu() {
@@ -31,15 +32,18 @@ class GhostContainerViewController: UIViewController {
     sideMenuWidthConstraint.constant = targetWidth
   }
   
-  @IBAction func togglePreview() {
-    let targetWidth: CGFloat = previewWidthConstraint.constant == 0 ? 240 : 0
-    previewWidthConstraint.constant = targetWidth
-  }
-  
   // show/hide the Info panel on the far right
   @IBAction func toggleInfo() {
     let targetWidth: CGFloat = infoWidthConstraint.constant == 0 ? 210 : 0
     infoWidthConstraint.constant = targetWidth
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    // initial layout
+    infoWidthConstraint.constant = 0
+    sideMenuWidthConstraint.constant = 0
   }
   
   func toggleFullEditMode() {
@@ -76,5 +80,38 @@ class GhostContainerViewController: UIViewController {
   func storePanelDimensions() {
     _sideMenuWidth = sideMenuWidthConstraint.constant
     _postListWidth = postListWidthConstraint.constant
+  }
+  
+  //
+  // we need a way for (a) all the various child views to perform things globally and share data,
+  // (b) for the containing view to keep track of specific children
+  // an Embed segue fires for each of the child views, so we'll use the segue as a hook to
+  // store the necessary references. Each child is a subclass of GhostBaseDetailViewController, which
+  // includes a containerViewController attribute to hook back to the parent. Is there a better way
+  // to do this?
+  //
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let segueIdentifier = segue.identifier
+    let destination = segue.destination
+    
+    // this is a little hacky
+    // some of the views we're interested in are embedded in NavigationControllers, so we have
+    // to drill down into the childViewControllers collection for those
+    switch(segueIdentifier) {
+    case "sidebar":
+      (destination as! GhostBaseDetailViewController).containerViewController = self
+    case "postList":
+      (destination.childViewControllers[0] as! GhostBaseDetailViewController).containerViewController = self
+    case "edit":
+      (destination.childViewControllers[0] as! GhostBaseDetailViewController).containerViewController = self
+      editPostViewController = destination.childViewControllers[0] as? EditPostViewController
+    case "info":
+      (destination as! GhostBaseDetailViewController).containerViewController = self
+    case "preview":
+      (destination.childViewControllers[0] as! GhostBaseDetailViewController).containerViewController = self
+      previewViewController = destination.childViewControllers[0] as? PreviewViewController
+    default:
+      break
+    }
   }
 }

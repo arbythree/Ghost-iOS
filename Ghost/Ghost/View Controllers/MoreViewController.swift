@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MoreViewController: UIViewController {
+class MoreViewController: GhostBaseDetailViewController {
   @IBOutlet var logOutButton: UIButton!;
   
   @IBAction func signOut() {

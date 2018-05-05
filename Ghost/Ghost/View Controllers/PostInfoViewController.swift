@@ -11,6 +11,15 @@ import UIKit
 
 class PostInfoViewController: GhostBaseDetailViewController {
   @IBAction func save() {
-    containerViewController.editPostViewController?.save()
+    containerViewController?.editPostViewController?.save()
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.layer.shadowColor = UIColor.black.cgColor
+  }
+  
+  @IBAction func hide() {
+    containerViewController?.toggleInfo()
   }
 }
