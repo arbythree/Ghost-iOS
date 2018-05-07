@@ -11,7 +11,7 @@ import UIKit
 import WebKit
 import Down
 
-class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate, WKNavigationDelegate {
+class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate, WKNavigationDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   @IBOutlet weak var bodyTextView: UITextView!
   @IBOutlet weak var previewWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var webView: WKWebView!
@@ -61,33 +61,56 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     super.viewDidLoad()
     previewWidthConstraint.constant = 0
     webView.navigationDelegate = self
+    
+    // lay out the text input area
     let verticalPadding: CGFloat = 60
     let horizontalPadding: CGFloat = 120
     bodyTextView.textContainerInset = UIEdgeInsetsMake(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding)
     
-    let italicButton = UIBarButtonItem(title: "Italic", style: .plain, target: self, action: #selector(formatItalic))
-    let boldButton = UIBarButtonItem(title: "Bold", style: .plain, target: self, action: #selector(formatBold))
-    accessoryView.items = [boldButton, wytm2italicButton]
+    // instantiate and add buttons
+    let italicButton = UIBarButtonItem(title: "Italic",  style: .plain, target: self, action: #selector(formatItalic))
+    let boldButton   = UIBarButtonItem(title: "Bold",    style: .plain, target: self, action: #selector(formatBold))
+    let bulletButton = UIBarButtonItem(title: "Bullets", style: .plain, target: self, action: #selector(formatBullet))
+    let imageButton  = UIBarButtonItem(title: "Image",   style: .plain, target: self, action: #selector(insertImage))
+    accessoryView.items = [boldButton, italicButton, bulletButton, imageButton]
+    
+    // lay it out and attach it
     accessoryView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
-    
-    
-    
     bodyTextView.inputAccessoryView = accessoryView
   }
   
   @objc func formatItalic() {
-    let allText = bodyTextView.text!
-    let range = bodyTextView.selectedTextRange!
-    let selection = bodyTextView.text(in: range)!
-    let newSelection = "/\(selection)/"
-  
-    // this isn't right...we need to use a Range but I can't figure it out yet
-//    let offset = bodyTextView.sc
-    bodyTextView.text = allText.replacingOccurrences(of: selection, with: newSelection)
-    
+    wrapCurrentSelection(with: "/")
   }
 
   @objc func formatBold() {
+    wrapCurrentSelection(with: "*")
+  }
+  
+  @objc func formatBullet() {
+  }
+  
+  @objc func insertImage() {
+    let imagePicker = UIImagePickerController()
+    imagePicker.delegate = (self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate)
+    imagePicker.sourceType = .savedPhotosAlbum
+    imagePicker.allowsEditing = false
+    self.present(imagePicker, animated: true, completion: nil)
+  }
+  
+  private func wrapCurrentSelection(with token:String) {
+    let allText = bodyTextView.text!
+    let range = bodyTextView.selectedTextRange!
+    let selection = bodyTextView.text(in: range)!
+    let newSelection = token + "\(selection)" + token
+    let start = bodyTextView.offset(from: bodyTextView.beginningOfDocument, to: range.start)
+    let end = bodyTextView.offset(from: bodyTextView.beginningOfDocument, to: range.end)
+    
+    var newText = allText.prefix(start) + newSelection
+    newText.append(contentsOf: allText.dropFirst(end))
+    
+    // good grief, that was complicated. Swift 4 Strings kinda hurt
+    bodyTextView.text = String(newText)
   }
   
   //
@@ -101,7 +124,27 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
     insertCSSString(into: webView)
   }
-  
+
+  // fired when user chooses an image
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    // 1. upload image
+    let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+    let imageData = UIImageJPEGRepresentation(image, 0)!
+    let client = GhostRESTClient()
+    client.upload(
+      imageData: imageData,
+      success: { (body) in
+        picker.dismiss(animated: true, completion: nil)
+      },
+      failure: { () in
+        picker.dismiss(animated: true, completion: nil)
+      }
+    )
+    
+    // 2. get URL to image
+    // 3. insert URL into markdown
+  }
+
   //
   // MARK: private parts
   //

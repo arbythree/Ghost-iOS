@@ -32,7 +32,7 @@ class GhostRESTClient {
     }
   }
   
-  func post(path: String, parameters: [String: Any], success: @escaping (String) -> Void, failure:() -> Void) -> Void {
+  func post(path: String, parameters: [String: Any], success: @escaping (String) -> Void, failure:() -> Void) {
     Alamofire.request(fullURL(path: path), method: .post, parameters: parameters, headers: authorizationHeader()).responseJSON { response in
       let status = response.response?.statusCode;
       if (status == 200) {
@@ -42,7 +42,7 @@ class GhostRESTClient {
     }
   }
   
-  func put(path: String, parameters: [String: Any], success: @escaping (NSDictionary) -> Void, failure: @escaping () -> Void) -> Void {
+  func put(path: String, parameters: [String: Any], success: @escaping (NSDictionary) -> Void, failure: @escaping () -> Void) {
     Alamofire.request(fullURL(path: path), method: .put, parameters: parameters, headers: authorizationHeader()).responseJSON { response in
       let status = response.response?.statusCode;
       if (status == 200) {
@@ -54,6 +54,24 @@ class GhostRESTClient {
     }
   }
   
+  func upload(imageData: Data, success: @escaping (String) -> Void, failure: @escaping () -> Void) {
+    let url = URL(string: fullURL(path: "/uploads"))!
+
+    Alamofire.upload(imageData,
+                     to: url,
+                     method: .post,
+                     headers: authorizationHeader()
+    ).responseString { (response) in
+      let status = response.response?.statusCode
+      if status == 200 {
+        success(response.description)
+      } else {
+        failure()
+      }
+    }
+  }
+  
+  // this isn't right...need to figure out how to get the client_secret programmatically
   func fetchAuthToken(username: String, password: String, success: @escaping (String) -> Void, failure:() -> Void) -> Void {
     let params = [
       "grant_type":    "password",
