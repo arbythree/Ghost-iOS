@@ -65,24 +65,29 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     let horizontalPadding: CGFloat = 120
     bodyTextView.textContainerInset = UIEdgeInsetsMake(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding)
     
-    let button = UIBarButtonItem(title: "Italic", style: .plain, target: self, action: #selector(formatItalic))
-    accessoryView.items = [button]
+    let italicButton = UIBarButtonItem(title: "Italic", style: .plain, target: self, action: #selector(formatItalic))
+    let boldButton = UIBarButtonItem(title: "Bold", style: .plain, target: self, action: #selector(formatBold))
+    accessoryView.items = [boldButton, wytm2italicButton]
     accessoryView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
+    
+    
     
     bodyTextView.inputAccessoryView = accessoryView
   }
   
   @objc func formatItalic() {
-//    let allText = bodyTextView.text!
-//    let range = bodyTextView.selectedTextRange!
-//    let aRange = bodyTextView.selectedRange
-//    let dRange = Range(aRange)!
-//    let selectedText = bodyTextView.text(in: range)!
-//    let newString = "*\(selectedText)*"
-//    let allNewText = allText.replacingCharacters(in: dRange, with: newString)
-//    
-//    
-//    bodyTextView.text = allNewText
+    let allText = bodyTextView.text!
+    let range = bodyTextView.selectedTextRange!
+    let selection = bodyTextView.text(in: range)!
+    let newSelection = "/\(selection)/"
+  
+    // this isn't right...we need to use a Range but I can't figure it out yet
+//    let offset = bodyTextView.sc
+    bodyTextView.text = allText.replacingOccurrences(of: selection, with: newSelection)
+    
+  }
+
+  @objc func formatBold() {
   }
   
   //
