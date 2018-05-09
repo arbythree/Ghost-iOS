@@ -54,21 +54,32 @@ class GhostRESTClient {
     }
   }
   
-  func upload(imageData: Data, success: @escaping (String) -> Void, failure: @escaping () -> Void) {
+  func upload(imageData: Data, name: String, success: @escaping (String) -> Void, failure: @escaping () -> Void) {
     let url = URL(string: fullURL(path: "/uploads"))!
-
-    Alamofire.upload(imageData,
-                     to: url,
-                     method: .post,
-                     headers: authorizationHeader()
-    ).responseString { (response) in
-      let status = response.response?.statusCode
-      if status == 200 {
-        success(response.description)
-      } else {
-        failure()
+    var headers = authorizationHeader()
+    headers["Content-Type"] = "multipart/form-data"
+    
+    Alamofire.upload(
+      multipartFormData: { (multipartFormData) in
+        multipartFormData.append(imageData, withName: "uploadimage", fileName: "\(name).jpg", mimeType: "image/jpeg")
+      },
+      usingThreshold: UInt64.init(),
+      to: url,
+      method: .post,
+      headers: headers,
+      encodingCompletion: { (result) in
+        switch(result) {
+        case .success(let upload, _, _):
+          upload.responseString(completionHandler: { (response) in
+            success(String(decoding: response.data!, as: UTF8.self))
+          })
+          break
+        case .failure(let error):
+          print("Error during upload: \(error.localizedDescription)")
+          break
+        }
       }
-    }
+    )
   }
   
   // this isn't right...need to figure out how to get the client_secret programmatically

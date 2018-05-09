@@ -92,25 +92,50 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   
   @objc func insertImage() {
     let imagePicker = UIImagePickerController()
-    imagePicker.delegate = (self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate)
+    imagePicker.delegate = (self as UIImagePickerControllerDelegate & UINavigationControllerDelegate)
     imagePicker.sourceType = .savedPhotosAlbum
     imagePicker.allowsEditing = false
     self.present(imagePicker, animated: true, completion: nil)
   }
   
   private func wrapCurrentSelection(with token:String) {
-    let allText = bodyTextView.text!
     let range = bodyTextView.selectedTextRange!
+    let allText = bodyTextView.text!
     let selection = bodyTextView.text(in: range)!
-    let newSelection = token + "\(selection)" + token
     let start = bodyTextView.offset(from: bodyTextView.beginningOfDocument, to: range.start)
     let end = bodyTextView.offset(from: bodyTextView.beginningOfDocument, to: range.end)
+    var newSelection = token
+    
+    // if there's a bona fide selection (as opposed to a cursor but no selection),
+    // put the token on both ends of the selection
+    if start != end {
+       newSelection = token + "\(selection)" + token
+    }
     
     var newText = allText.prefix(start) + newSelection
     newText.append(contentsOf: allText.dropFirst(end))
-    
     // good grief, that was complicated. Swift 4 Strings kinda hurt
+    
+    // replace the text without affected scroll location
+    let offset = bodyTextView.contentOffset
     bodyTextView.text = String(newText)
+    bodyTextView.setContentOffset(offset, animated: false)
+  }
+  
+  private func insertTextAtCaret(insertedText:String) {
+    let range = bodyTextView.selectedTextRange!
+    let allText = bodyTextView.text!
+    let selection = bodyTextView.text(in: range)!
+    let start = bodyTextView.offset(from: bodyTextView.beginningOfDocument, to: range.start)
+    let end = bodyTextView.offset(from: bodyTextView.beginningOfDocument, to: range.end)
+    var newText = allText.prefix(start) + insertedText
+    newText.append(contentsOf: allText.dropFirst(end))
+    // good grief, that was complicated. Swift 4 Strings kinda hurt
+    
+    // replace the text without affected scroll location
+    let offset = bodyTextView.contentOffset
+    bodyTextView.text = String(newText)
+    bodyTextView.setContentOffset(offset, animated: false)
   }
   
   //
@@ -129,20 +154,25 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     // 1. upload image
     let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+    let referenceURL = info["UIImagePickerControllerReferenceURL"] as! NSURL
+    let components = URLComponents(string: referenceURL.absoluteString!)!
+    let items = components.queryItems
+    let name = items?.first?.value?.replacingOccurrences(of: "-", with: "").lowercased()
     let imageData = UIImageJPEGRepresentation(image, 0)!
     let client = GhostRESTClient()
+    
     client.upload(
       imageData: imageData,
+      name: name!,
       success: { (body) in
         picker.dismiss(animated: true, completion: nil)
+        let markup = "![](\(body.replacingOccurrences(of: "\"", with: "")))"
+        self.insertTextAtCaret(insertedText: markup)
       },
       failure: { () in
         picker.dismiss(animated: true, completion: nil)
       }
     )
-    
-    // 2. get URL to image
-    // 3. insert URL into markdown
   }
 
   //
