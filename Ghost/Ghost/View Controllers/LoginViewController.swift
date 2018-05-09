@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
   @IBAction func attemptLogin() {
     let mgr = AuthenticationManager.sharedManager;
     mgr.attemptLogin(
+      baseURL: urlTextField.text!,
       username: emailTextField.text!,
       password: passwordTextField.text!,
       success: { (token) in

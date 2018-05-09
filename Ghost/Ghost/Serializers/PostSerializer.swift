@@ -74,4 +74,33 @@ class PostSerializer {
       post.published_at = formatter.date(from: pa as! String)!;
     }
   }
+  
+  class func mobiledocToMarkdown(_ mobiledoc: String) -> String? {
+    let data = mobiledoc.data(using: .utf8)
+    do {
+      let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
+      let cardsJSON = json["cards"] as! NSArray
+      let markdownCardJSON = (cardsJSON[0] as! NSArray)[1] as! NSDictionary
+      let markdown = markdownCardJSON["markdown"]
+      return markdown as! String
+    } catch let error as NSError {
+      print(error.localizedDescription)
+    }
+    
+    return nil
+  }
 }
+
+
+//return "{" +
+//  "  \"version\": \"0.3.1\"," +
+//  "  \"markups\": []," +
+//  "  \"atoms\": []," +
+//  "  \"cards\": [" +
+//  "    [\"card-markdown\", {" +
+//  "      \"cardName\": \"card-markdown\"," +
+//  "      \"markdown\": \"\(escapedMarkdown)\"" +
+//  "    }]" +
+//  "  ]," +
+//  "  \"sections\": [[10, 0]]" +
+//"}"

@@ -16,7 +16,7 @@ class Post {
   var title:        String = "";
   var author:       String = "";
   var status:       String = "";
-  var markdown:     String = "";
+  var markdown:     String?
   var tags:         String = "";
   var updated_at:   Date = Date();
   var created_at:   Date = Date();
@@ -36,9 +36,9 @@ class Post {
   //
   // liberal inspiration from https://github.com/TryGhost/Ghost-Android/blob/8f31cefbf3caed339cf00726872d131eb2ddefa2/app/src/main/java/me/vickychijwani/spectre/network/GhostApiUtils.java
   //
-  var mobiledoc: String {
+  var mobiledoc: String? {
     get {
-      let escapedMarkdown = markdown
+      let escapedMarkdown = markdown?
         .replacingOccurrences(of: "\\", with: "\\\\")
         .replacingOccurrences(of: "\"", with: "\\\"")
         .replacingOccurrences(of: "\n", with: "\\n")
@@ -86,10 +86,11 @@ class Post {
     let client = GhostRESTClient()
     let params: Parameters = [ "formats": "html, plaintext, mobiledoc" ]
     client.getJSON(path: "/posts/\(id)/", parameters: params, completionHandler: { responseJSON in
-      let postsJSON = responseJSON["posts"] as! NSArray;
-      let postJSON = postsJSON[0] as! NSDictionary;
-      self.markdown = postJSON["plaintext"] as! String;
-      success();
+      let postsJSON = responseJSON["posts"] as! NSArray
+      let postJSON = postsJSON[0] as! NSDictionary
+      let mobiledoc = postJSON["mobiledoc"] as! String
+      self.markdown = PostSerializer.mobiledocToMarkdown(mobiledoc)
+      success()
     });
   }
   

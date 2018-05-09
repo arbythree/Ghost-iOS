@@ -8,10 +8,37 @@
 
 import Foundation
 import Alamofire
+import KeychainSwift
 
 class GhostRESTClient {
+  var baseURL: String? {
+    didSet {
+      if baseURL == nil {
+        return
+      }
+      
+      // strip trailing
+      while baseURL?.last == "/" {
+        let stripped = baseURL!.dropLast()
+        baseURL = String(stripped)
+      }
+      
+      let keychain = KeychainSwift();
+      keychain.set(baseURL!, forKey: "baseURL")
+    }
+  }
+
+  init() {
+    let keychain = KeychainSwift();
+    baseURL = keychain.get("baseURL")
+    
+    let configuration = URLSessionConfiguration.ephemeral
+    configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+    _ = Alamofire.SessionManager(configuration: configuration)
+  }
+  
   func fullURL(path: String) -> String {
-    return "https://theojisan.com/ghost/api/v0.1\(path)";
+    return "\(baseURL!)/ghost/api/v0.1\(path)";
   }
   
   func authorizationHeader() -> HTTPHeaders {

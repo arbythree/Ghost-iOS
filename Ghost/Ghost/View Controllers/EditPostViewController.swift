@@ -120,6 +120,7 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     let offset = bodyTextView.contentOffset
     bodyTextView.text = String(newText)
     bodyTextView.setContentOffset(offset, animated: false)
+    renderPreview()
   }
   
   private func insertTextAtCaret(insertedText:String) {
@@ -136,6 +137,7 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     let offset = bodyTextView.contentOffset
     bodyTextView.text = String(newText)
     bodyTextView.setContentOffset(offset, animated: false)
+    renderPreview()
   }
   
   //
@@ -166,7 +168,8 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
       name: name!,
       success: { (body) in
         picker.dismiss(animated: true, completion: nil)
-        let markup = "![](\(body.replacingOccurrences(of: "\"", with: "")))"
+        let fullPath = client.baseURL! + body.replacingOccurrences(of: "\"", with: "")
+        let markup = "![](\(fullPath))"
         self.insertTextAtCaret(insertedText: markup)
       },
       failure: { () in
@@ -185,7 +188,7 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   }
   
   private func renderPreview() {
-    let down = Down(markdownString: post!.markdown)
+    let down = Down(markdownString: post!.markdown!)
     let html = try? down.toHTML()
     webView.loadHTMLString(html!, baseURL: URL(string: "http://foo"))
   }
