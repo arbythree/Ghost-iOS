@@ -69,7 +69,7 @@ class GhostContainerViewController: UIViewController {
       targetPostListWidth = self._postListWidth
     }
 
-    UIView.animate(withDuration: Constants.AnimationDuration, animations: {
+    UIView.animate(withDuration: Constants.animationDuration, animations: {
       self.sideMenuWidthConstraint.constant = targetSideMenuWidth
       self.postListWidthConstraint.constant = targetPostListWidth
       self.view.layoutIfNeeded()

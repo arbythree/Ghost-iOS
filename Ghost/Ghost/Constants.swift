@@ -7,5 +7,5 @@
 //
 
 struct Constants {
-  static let AnimationDuration = 2.0
+  static let animationDuration = 2.0
 }

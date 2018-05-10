@@ -38,7 +38,11 @@ class GhostRESTClient {
   }
   
   func fullURL(path: String) -> String {
-    return "\(baseURL!)/ghost/api/v0.1\(path)";
+    var cleanPath = path
+    if path.first != "/" {
+      cleanPath = "/" + path
+    }
+    return "\(baseURL!)/ghost/api/v0.1\(cleanPath)";
   }
   
   func authorizationHeader() -> HTTPHeaders {
@@ -114,7 +118,7 @@ class GhostRESTClient {
     let params = [
       "grant_type":    "password",
       "client_id":     "ghost-admin",
-      "client_secret": "5952d5f67658",
+      "client_secret": Secrets.ghostSecretKey,
       "username":      username,
       "password":      password
     ];

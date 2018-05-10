@@ -39,7 +39,13 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   }
   
   @IBAction func togglePreview() {
+    // make sure we're in full edit view, if we weren't already
+    if previewWidthConstraint.constant == 0 {
+      self.containerViewController?.toggleFullEditMode()
+    }
+    
     previewWidthConstraint.constant = previewWidthConstraint.constant == 0 ? self.view.frame.width / 2 : 0
+    setEditorPadding()
   }
   
   @IBAction func cancel() {
@@ -62,22 +68,8 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     previewWidthConstraint.constant = 0
     webView.navigationDelegate = self
     
-    // lay out the text input area
-    let verticalPadding: CGFloat = 60
-    let horizontalPadding: CGFloat = 120
-    bodyTextView.textContainerInset = UIEdgeInsetsMake(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding)
-    
-    // instantiate and add buttons
-    let italicButton    = UIBarButtonItem(title: "Italic",  style: .plain, target: self, action: #selector(formatItalic))
-    let boldButton      = UIBarButtonItem(title: "Bold",    style: .plain, target: self, action: #selector(formatBold))
-    let underlineButton = UIBarButtonItem(title: "Bold",    style: .plain, target: self, action: #selector(formatUnderline))
-    let bulletButton    = UIBarButtonItem(title: "Bullets", style: .plain, target: self, action: #selector(formatBullet))
-    let imageButton     = UIBarButtonItem(title: "Image",   style: .plain, target: self, action: #selector(insertImage))
-    accessoryView.items = [boldButton, italicButton, underlineButton, bulletButton, imageButton]
-    
-    // lay it out and attach it
-    accessoryView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
-    bodyTextView.inputAccessoryView = accessoryView
+    setEditorPadding()
+    initializeInputAccessory()
   }
   
   @objc func formatItalic() {
@@ -93,6 +85,9 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   }
   
   @objc func formatBullet() {
+  }
+  
+  @objc func formatNumberedList() {
   }
   
   @objc func insertImage() {
@@ -131,17 +126,19 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   private func insertTextAtCaret(insertedText:String) {
     let range = bodyTextView.selectedTextRange!
     let allText = bodyTextView.text!
-    let selection = bodyTextView.text(in: range)!
     let start = bodyTextView.offset(from: bodyTextView.beginningOfDocument, to: range.start)
     let end = bodyTextView.offset(from: bodyTextView.beginningOfDocument, to: range.end)
     var newText = allText.prefix(start) + insertedText
     newText.append(contentsOf: allText.dropFirst(end))
-    // good grief, that was complicated. Swift 4 Strings kinda hurt
-    
-    // replace the text without affected scroll location
+    //
+    // !@#$%^ good grief, that was complicated. Swift 4 Strings kinda hurt
+    //
+    // replace the text without affecting scroll location
     let offset = bodyTextView.contentOffset
     bodyTextView.text = String(newText)
     bodyTextView.setContentOffset(offset, animated: false)
+    
+    // update preview
     renderPreview()
   }
   
@@ -195,7 +192,9 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   private func renderPreview() {
     let down = Down(markdownString: post!.markdown!)
     let html = try? down.toHTML()
-    webView.loadHTMLString(html!, baseURL: URL(string: "http://foo"))
+    let offset = webView.scrollView.contentOffset
+    webView.loadHTMLString(html!, baseURL: URL(string: GhostRESTClient().baseURL!))
+    webView.scrollView.setContentOffset(offset, animated: false)
   }
   
   //
@@ -203,8 +202,53 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   // courtesy of https://stackoverflow.com/questions/33123093/insert-css-into-loaded-html-in-uiwebview-wkwebview
   //
   private func insertCSSString(into: WKWebView) {
-    let cssString = "body { font-size: 36px; color: #333 }"
+    let cssString = "body { font-size: 36px; color: #333; padding: 36px !important; }"
     let jsString = "var style = document.createElement('style'); style.innerHTML = '\(cssString)'; document.head.appendChild(style);"
     webView.evaluateJavaScript(jsString, completionHandler: nil)
+  }
+  
+  //
+  // create and rather tediously build up the Input Accessory (the toolbar that rides on top of the keyboard)
+  //
+  private func initializeInputAccessory() {
+    let italicImage    = UIImage(named: "italic")?.withRenderingMode(.alwaysOriginal)
+    let boldImage      = UIImage(named: "bold")?.withRenderingMode(.alwaysOriginal)
+    let underlineImage = UIImage(named: "underline")?.withRenderingMode(.alwaysOriginal)
+    let bulletsImage   = UIImage(named: "bullets")?.withRenderingMode(.alwaysOriginal)
+    let numListImage   = UIImage(named: "numbered-list")?.withRenderingMode(.alwaysOriginal)
+    let imageImage     = UIImage(named: "image")?.withRenderingMode(.alwaysOriginal)
+
+    let italicButton    = UIBarButtonItem(image: italicImage,    style: .plain, target: self, action: #selector(formatItalic))
+    let boldButton      = UIBarButtonItem(image: boldImage,      style: .plain, target: self, action: #selector(formatBold))
+    let underlineButton = UIBarButtonItem(image: underlineImage, style: .plain, target: self, action: #selector(formatUnderline))
+    let bulletButton    = UIBarButtonItem(image: bulletsImage,   style: .plain, target: self, action: #selector(formatBullet))
+    let numListButton   = UIBarButtonItem(image: numListImage,   style: .plain, target: self, action: #selector(formatNumberedList))
+    let imageButton     = UIBarButtonItem(image: imageImage,     style: .plain, target: self, action: #selector(insertImage))
+  
+    // populate the toolbar
+    accessoryView.items = [boldButton, italicButton, underlineButton, bulletButton, numListButton, imageButton]
+  
+    // lay it out and attach it
+    accessoryView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
+    bodyTextView.inputAccessoryView = accessoryView
+  }
+  
+  //
+  // the padding of the UITextView editor area varies depending on several factors:
+  // 1. overall screen dimensions
+  // 2. screen orientation
+  // 3. is preview visible (which is another way of expressing 1 & 2 as it alters the effective width
+  // of the edit pane
+  //
+  private func setEditorPadding() {
+    // lay out the text input area
+    let verticalPadding: CGFloat = 60
+    var horizontalPadding: CGFloat = 120
+    
+    if previewWidthConstraint.constant > 0 {
+      horizontalPadding = 30
+    }
+    
+    bodyTextView.textContainerInset = UIEdgeInsetsMake(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding)
   }
 }

@@ -11,6 +11,7 @@
 		7F20C10D20A460930076DCE1 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F20C10B20A460930076DCE1 /* OnePasswordExtension.m */; };
 		7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */; };
 		7F2689BA209CE14B00D82752 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2689B9209CE14B00D82752 /* PreviewViewController.swift */; };
+		7F2689BC20A4959100D82752 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2689BB20A4959100D82752 /* Secrets.swift */; };
 		7F26E3A720991767001437FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26E3A620991767001437FF /* Constants.swift */; };
 		7F35F0DE209764B000510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
 		7F35F0DF209764B900510BDD /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35F0DD209764B000510BDD /* Down.framework */; };
@@ -37,6 +38,7 @@
 		7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375F92090AAEA0051F4A5 /* TabBarController.swift */; };
 		7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */; };
 		7F8CC11420916B84005D8E2E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8CC11320916B83005D8E2E /* WebKit.framework */; };
+		7F91355B20A4D8E00035A487 /* GhostRESTClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F91355A20A4D8E00035A487 /* GhostRESTClientTests.swift */; };
 		7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A42090CE2200B43914 /* GhostRESTClient.swift */; };
 		7FC888A72090DEC300B43914 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A62090DEC300B43914 /* LoginViewController.swift */; };
 		7FC888A92090E0B000B43914 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A82090E0B000B43914 /* AuthenticationManager.swift */; };
@@ -107,6 +109,7 @@
 		7F20C10B20A460930076DCE1 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostBaseDetailViewController.swift; sourceTree = "<group>"; };
 		7F2689B9209CE14B00D82752 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		7F2689BB20A4959100D82752 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		7F26E3A620991767001437FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7F35F0DD209764B000510BDD /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
 		7F35F0E42097656900510BDD /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		7F6375F92090AAEA0051F4A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		7F8CC11320916B83005D8E2E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		7F91355A20A4D8E00035A487 /* GhostRESTClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostRESTClientTests.swift; sourceTree = "<group>"; };
 		7FC888A42090CE2200B43914 /* GhostRESTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostRESTClient.swift; sourceTree = "<group>"; };
 		7FC888A62090DEC300B43914 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7FC888A82090E0B000B43914 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -220,20 +224,19 @@
 			isa = PBXGroup;
 			children = (
 				7F6375BE209018520051F4A5 /* Main.storyboard */,
+				7F6375C3209018530051F4A5 /* LaunchScreen.storyboard */,
 				7FC888B0209121CB00B43914 /* TableView Cells */,
 				7F3BB8EC209B3E9E009E6EE7 /* Serializers */,
 				7F6375EB2090198C0051F4A5 /* Models */,
 				7F6375E8209019270051F4A5 /* View Controllers */,
+				7F6375C1209018530051F4A5 /* Assets.xcassets */,
+				7F20C10920A460930076DCE1 /* 1Password.xcassets */,
+				7F20C10820A460910076DCE1 /* Ghost-Bridging-Header.h */,
+				7F6375C6209018530051F4A5 /* Info.plist */,
 				7F6375BA209018520051F4A5 /* AppDelegate.swift */,
 				7F6375BC209018520051F4A5 /* ViewController.swift */,
-				7F6375C1209018530051F4A5 /* Assets.xcassets */,
-				7F6375C3209018530051F4A5 /* LaunchScreen.storyboard */,
-				7F6375C6209018530051F4A5 /* Info.plist */,
 				7F26E3A620991767001437FF /* Constants.swift */,
-				7F20C10920A460930076DCE1 /* 1Password.xcassets */,
-				7F20C10A20A460930076DCE1 /* OnePasswordExtension.h */,
-				7F20C10B20A460930076DCE1 /* OnePasswordExtension.m */,
-				7F20C10820A460910076DCE1 /* Ghost-Bridging-Header.h */,
+				7F2689BB20A4959100D82752 /* Secrets.swift */,
 			);
 			path = Ghost;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				7F6375CF209018540051F4A5 /* GhostTests.swift */,
+				7F91355A20A4D8E00035A487 /* GhostRESTClientTests.swift */,
 				7F6375D1209018540051F4A5 /* Info.plist */,
 			);
 			path = GhostTests;
@@ -289,6 +293,8 @@
 		7F6375F520909FB00051F4A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F20C10A20A460930076DCE1 /* OnePasswordExtension.h */,
+				7F20C10B20A460930076DCE1 /* OnePasswordExtension.m */,
 				7F35F0EA209770D300510BDD /* Alamofire.framework */,
 				7F35F0DD209764B000510BDD /* Down.framework */,
 				7F8CC11320916B83005D8E2E /* WebKit.framework */,
@@ -500,6 +506,7 @@
 				7F20C10D20A460930076DCE1 /* OnePasswordExtension.m in Sources */,
 				7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */,
 				7F3BB8E9209AA3A8009E6EE7 /* PersistenceManager.swift in Sources */,
+				7F2689BC20A4959100D82752 /* Secrets.swift in Sources */,
 				7F6375ED209019A60051F4A5 /* Post.swift in Sources */,
 				7F35F0E52097656900510BDD /* Tag.swift in Sources */,
 			);
@@ -509,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F91355B20A4D8E00035A487 /* GhostRESTClientTests.swift in Sources */,
 				7F6375D0209018540051F4A5 /* GhostTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,6 +630,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -634,6 +643,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
 			name = Debug;
 		};
@@ -676,6 +686,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -687,6 +698,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

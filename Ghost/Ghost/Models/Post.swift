@@ -52,7 +52,7 @@ class Post {
         "  \"cards\": [" +
         "    [\"card-markdown\", {" +
         "      \"cardName\": \"card-markdown\"," +
-        "      \"markdown\": \"\(escapedMarkdown)\"" +
+        "      \"markdown\": \"\(escapedMarkdown!)\"" +
         "    }]" +
         "  ]," +
         "  \"sections\": [[10, 0]]" +

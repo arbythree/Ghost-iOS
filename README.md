@@ -5,7 +5,17 @@ The project uses Carthage for dependency management:
 ```brew install carthage
 ```carthage update
 
+Because I/Ray haven't yet figured out how to fetch a token, you have to store your token in a structure like this:
+
+```struct Secrets {
+```  static let ghostSecretKey = "<your secret key>"
+```}
+
+Add a Secrets.swift file to your project and paste this in and it'll work swimmingly.
+
 # To do
+
+See https://trello.com/b/QQJvqV91/ghost-ios for definitive list
 
 - New posts
 - Editor formatting

@@ -33,10 +33,10 @@ class PostSerializer {
       path: "/posts/\(post.id)",
       parameters: params,
       success: { (result) in
-        
+        //TODO: handle this
       },
       failure: {
-        
+        //TODO: handle this
       }
     )
   }
@@ -82,7 +82,7 @@ class PostSerializer {
       let cardsJSON = json["cards"] as! NSArray
       let markdownCardJSON = (cardsJSON[0] as! NSArray)[1] as! NSDictionary
       let markdown = markdownCardJSON["markdown"]
-      return markdown as! String
+      return markdown as? String
     } catch let error as NSError {
       print(error.localizedDescription)
     }
@@ -91,8 +91,9 @@ class PostSerializer {
   }
 }
 
-
-//return "{" +
+// sample mobiledoc:
+//
+//  "{" +
 //  "  \"version\": \"0.3.1\"," +
 //  "  \"markups\": []," +
 //  "  \"atoms\": []," +
@@ -104,3 +105,4 @@ class PostSerializer {
 //  "  ]," +
 //  "  \"sections\": [[10, 0]]" +
 //"}"
+//

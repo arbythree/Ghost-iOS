@@ -31,10 +31,5 @@ class PostTableViewCell: UITableViewCell {
   @IBOutlet weak var ageLabel: UILabel!
   @IBOutlet weak var statusBadgeWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var authorLabelPaddingConstraint: NSLayoutConstraint!
-  
-
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    self.selectedBackgroundView?.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
-  }
+  @IBOutlet weak var selectedView: UIView!
 }
