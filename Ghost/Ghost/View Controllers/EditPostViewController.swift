@@ -16,12 +16,18 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   @IBOutlet weak var previewWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var webView: WKWebView!
   private var accessoryView: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+  var isDirty = false
   
   var post: Post? {
     didSet {
+      if isDirty {
+        // TODO: confirm user wants to lose changes
+      }
+      
       post?.reload {
         self.populatePostData()
         self.renderPreview()
+        self.isDirty = false
       }
     }
   }
@@ -147,6 +153,7 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   //
   func textViewDidChange(_ textView: UITextView) {
     post?.markdown = textView.text
+    isDirty = true
     renderPreview()
   }
   
@@ -186,7 +193,17 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   private func populatePostData() {
     if post == nil { return }
     self.title = post?.title
-    bodyTextView.text = post!.markdown
+
+    let attrString = NSMutableAttributedString(string: post!.markdown!)
+    let paragraphStyle = NSMutableParagraphStyle()
+    let menloFont = UIFont(name: "Menlo", size: 16)
+    let allTextRange = NSRange.init(location: 0, length: post!.markdown!.count)
+    
+    paragraphStyle.lineSpacing = 24
+    attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: allTextRange)
+    attrString.addAttribute(.font, value: menloFont as Any, range: allTextRange)
+    
+    bodyTextView.attributedText = attrString
   }
   
   private func renderPreview() {

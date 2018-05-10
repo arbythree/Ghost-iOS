@@ -18,6 +18,13 @@ class PostListViewController: GhostBaseDetailViewController, UITableViewDelegate
     Post.all(success: { posts in
       self._posts = posts
       self.tableView.reloadData()
+      
+      // select the first cell
+      if posts.count > 0 {
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .top)
+        self.tableView(self.tableView, didSelectRowAt: indexPath)
+      }
     })
   }
   

@@ -28,4 +28,9 @@ class Tag {
   init(json: NSDictionary) {
     
   }
+  
+  // return all Tags
+  class func all() -> [Tag] {
+    return []
+  }
 }

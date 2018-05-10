@@ -26,6 +26,7 @@ class GhostContainerViewController: UIViewController {
   var editPostViewController: EditPostViewController?
   var previewViewController: PreviewViewController?
   
+  // MARK: IBActions
   // show/hide the side menu on the far left
   @IBAction func toggleSideMenu() {
     let targetWidth: CGFloat = sideMenuWidthConstraint.constant == 0 ? 240 : 0
@@ -38,6 +39,25 @@ class GhostContainerViewController: UIViewController {
     infoWidthConstraint.constant = targetWidth
   }
   
+  @IBAction func toggleEditMode() {
+    var targetSideMenuWidth: CGFloat = 0
+    var targetPostListWidth: CGFloat = 0
+    storePanelDimensions()
+    
+    if _editing {
+      targetSideMenuWidth = self._sideMenuWidth
+      targetPostListWidth = self._postListWidth
+    }
+    
+    UIView.animate(withDuration: Constants.animationDuration, animations: {
+      self.sideMenuWidthConstraint.constant = targetSideMenuWidth
+      self.postListWidthConstraint.constant = targetPostListWidth
+      self.view.layoutIfNeeded()
+    })
+    _editing = !_editing
+  }
+  
+  // MARK: lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -57,29 +77,6 @@ class GhostContainerViewController: UIViewController {
     }
     
     _fullEditMode = !_fullEditMode
-  }
-  
-  @IBAction func toggleEditMode() {
-    var targetSideMenuWidth: CGFloat = 0
-    var targetPostListWidth: CGFloat = 0
-    storePanelDimensions()
-
-    if _editing {
-      targetSideMenuWidth = self._sideMenuWidth
-      targetPostListWidth = self._postListWidth
-    }
-
-    UIView.animate(withDuration: Constants.animationDuration, animations: {
-      self.sideMenuWidthConstraint.constant = targetSideMenuWidth
-      self.postListWidthConstraint.constant = targetPostListWidth
-      self.view.layoutIfNeeded()
-    })
-    _editing = !_editing
-  }
-  
-  func storePanelDimensions() {
-    _sideMenuWidth = sideMenuWidthConstraint.constant
-    _postListWidth = postListWidthConstraint.constant
   }
   
   //
@@ -113,5 +110,13 @@ class GhostContainerViewController: UIViewController {
     default:
       break
     }
+  }
+  
+  //
+  // MARK: private parts
+  //
+  private func storePanelDimensions() {
+    _sideMenuWidth = sideMenuWidthConstraint.constant
+    _postListWidth = postListWidthConstraint.constant
   }
 }

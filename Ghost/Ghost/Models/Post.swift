@@ -36,6 +36,10 @@ class Post {
   //
   // liberal inspiration from https://github.com/TryGhost/Ghost-Android/blob/8f31cefbf3caed339cf00726872d131eb2ddefa2/app/src/main/java/me/vickychijwani/spectre/network/GhostApiUtils.java
   //
+  
+  //
+  // TODO: move this out to a new class (MobileDocSerializer?)
+  //
   var mobiledoc: String? {
     get {
       let escapedMarkdown = markdown?
@@ -64,6 +68,9 @@ class Post {
     PostSerializer.populateFromJSON(post: self, json: json)
   }
   
+  //
+  // return all Posts
+  //
   class func all(success: @escaping ([Post]) -> Void) -> Void {
     let client = GhostRESTClient();
     let params: Parameters = [
@@ -71,6 +78,7 @@ class Post {
       "include" : "author, tags",
     ];
     
+    // TODO: move this out to the PostSerializer
     client.getJSON(path: "/posts/", parameters: params, completionHandler: { responseJSON in
       let postsJSON = responseJSON["posts"] as! NSArray;
       var posts: [Post] = [];
@@ -82,9 +90,10 @@ class Post {
     });
   }
   
+  // TODO: move this out to the PostSerializer
   func reload(success: @escaping () -> Void) {
     let client = GhostRESTClient()
-    let params: Parameters = [ "formats": "html, plaintext, mobiledoc" ]
+    let params: Parameters = [ "formats": "html, plaintext, mobiledoc", "status": "all" ]
     client.getJSON(path: "/posts/\(id)/", parameters: params, completionHandler: { responseJSON in
       let postsJSON = responseJSON["posts"] as! NSArray
       let postJSON = postsJSON[0] as! NSDictionary
