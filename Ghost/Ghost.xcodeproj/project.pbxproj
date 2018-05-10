@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F20C10C20A460930076DCE1 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F20C10920A460930076DCE1 /* 1Password.xcassets */; };
+		7F20C10D20A460930076DCE1 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F20C10B20A460930076DCE1 /* OnePasswordExtension.m */; };
 		7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */; };
 		7F2689BA209CE14B00D82752 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2689B9209CE14B00D82752 /* PreviewViewController.swift */; };
 		7F26E3A720991767001437FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26E3A620991767001437FF /* Constants.swift */; };
@@ -99,6 +101,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7F20C10820A460910076DCE1 /* Ghost-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ghost-Bridging-Header.h"; sourceTree = "<group>"; };
+		7F20C10920A460930076DCE1 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
+		7F20C10A20A460930076DCE1 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
+		7F20C10B20A460930076DCE1 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		7F2689B72098E3AC00D82752 /* GhostBaseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostBaseDetailViewController.swift; sourceTree = "<group>"; };
 		7F2689B9209CE14B00D82752 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		7F26E3A620991767001437FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -224,6 +230,10 @@
 				7F6375C3209018530051F4A5 /* LaunchScreen.storyboard */,
 				7F6375C6209018530051F4A5 /* Info.plist */,
 				7F26E3A620991767001437FF /* Constants.swift */,
+				7F20C10920A460930076DCE1 /* 1Password.xcassets */,
+				7F20C10A20A460930076DCE1 /* OnePasswordExtension.h */,
+				7F20C10B20A460930076DCE1 /* OnePasswordExtension.m */,
+				7F20C10820A460910076DCE1 /* Ghost-Bridging-Header.h */,
 			);
 			path = Ghost;
 			sourceTree = "<group>";
@@ -393,6 +403,7 @@
 				TargetAttributes = {
 					7F6375B6209018520051F4A5 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 					7F6375CA209018540051F4A5 = {
 						CreatedOnToolsVersion = 9.3;
@@ -435,6 +446,7 @@
 			files = (
 				7F6375C5209018530051F4A5 /* LaunchScreen.storyboard in Resources */,
 				7F6375C2209018530051F4A5 /* Assets.xcassets in Resources */,
+				7F20C10C20A460930076DCE1 /* 1Password.xcassets in Resources */,
 				7F6375C0209018520051F4A5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +497,7 @@
 				7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */,
 				7F3BB8E7209AA2B2009E6EE7 /* Upload.swift in Sources */,
 				7FC888B2209121E700B43914 /* PostTableViewCell.swift in Sources */,
+				7F20C10D20A460930076DCE1 /* OnePasswordExtension.m in Sources */,
 				7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */,
 				7F3BB8E9209AA3A8009E6EE7 /* PersistenceManager.swift in Sources */,
 				7F6375ED209019A60051F4A5 /* Post.swift in Sources */,
@@ -683,6 +696,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7PY3AJJXS2;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -697,6 +711,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.analemmaheavyindustries.Ghost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ghost/Ghost-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -707,6 +723,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7PY3AJJXS2;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -721,6 +738,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.analemmaheavyindustries.Ghost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ghost/Ghost-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

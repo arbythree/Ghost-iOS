@@ -68,11 +68,12 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     bodyTextView.textContainerInset = UIEdgeInsetsMake(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding)
     
     // instantiate and add buttons
-    let italicButton = UIBarButtonItem(title: "Italic",  style: .plain, target: self, action: #selector(formatItalic))
-    let boldButton   = UIBarButtonItem(title: "Bold",    style: .plain, target: self, action: #selector(formatBold))
-    let bulletButton = UIBarButtonItem(title: "Bullets", style: .plain, target: self, action: #selector(formatBullet))
-    let imageButton  = UIBarButtonItem(title: "Image",   style: .plain, target: self, action: #selector(insertImage))
-    accessoryView.items = [boldButton, italicButton, bulletButton, imageButton]
+    let italicButton    = UIBarButtonItem(title: "Italic",  style: .plain, target: self, action: #selector(formatItalic))
+    let boldButton      = UIBarButtonItem(title: "Bold",    style: .plain, target: self, action: #selector(formatBold))
+    let underlineButton = UIBarButtonItem(title: "Bold",    style: .plain, target: self, action: #selector(formatUnderline))
+    let bulletButton    = UIBarButtonItem(title: "Bullets", style: .plain, target: self, action: #selector(formatBullet))
+    let imageButton     = UIBarButtonItem(title: "Image",   style: .plain, target: self, action: #selector(insertImage))
+    accessoryView.items = [boldButton, italicButton, underlineButton, bulletButton, imageButton]
     
     // lay it out and attach it
     accessoryView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
@@ -85,6 +86,10 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
 
   @objc func formatBold() {
     wrapCurrentSelection(with: "*")
+  }
+  
+  @objc func formatUnderline() {
+    wrapCurrentSelection(with: "_")
   }
   
   @objc func formatBullet() {

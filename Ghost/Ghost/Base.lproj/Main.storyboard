@@ -418,19 +418,28 @@
                                     <action selector="attemptLogin" destination="u4m-sl-1OA" eventType="touchUpInside" id="nhr-sf-vGF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDL-Qa-SrV">
+                                <rect key="frame" x="367" y="320" width="30" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="onepassword-navbar"/>
+                                <connections>
+                                    <action selector="onePasswordLogin" destination="u4m-sl-1OA" eventType="touchUpInside" id="MeN-ea-Xyb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gRt-V0-CLl"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="IF5-le-O3k" id="Jw9-7d-DmD"/>
+                        <outlet property="onePasswordButton" destination="vDL-Qa-SrV" id="Dbh-CN-CrM"/>
                         <outlet property="passwordTextField" destination="AVa-DB-BBy" id="4ej-2H-ADc"/>
                         <outlet property="urlTextField" destination="ISi-JO-pZB" id="q4X-P9-CQA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHb-J2-5Ky" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4630" y="-3132"/>
+            <point key="canvasLocation" x="-4630.078125" y="-3132.03125"/>
         </scene>
         <!--Content-->
         <scene sceneID="E3z-j8-91v">
@@ -473,4 +482,7 @@
             <point key="canvasLocation" x="-2549" y="-2013"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="onepassword-navbar" width="23" height="23"/>
+    </resources>
 </document>
