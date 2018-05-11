@@ -13,7 +13,9 @@ class PostSerializer {
   class func serialize(post: Post) -> [String: Any] {
     var result: [String: Any] = [:]
     
-    result["id"]        = post.id
+    if !post.new {
+      result["id"]      = post.id
+    }
     result["title"]     = post.title
     result["mobiledoc"] = post.mobiledoc
     result["status"]    = post.status
@@ -29,15 +31,37 @@ class PostSerializer {
     let serialized = PostSerializer.serialize(post: post)
     let serializedArray = [serialized]
     let params = ["posts": serializedArray]
-    client.put(
+    
+    if post.new {
+      client.post(
+        path: "/posts",
+        parameters: params,
+        success: { result in
+          
+        },
+        failure: {
+        }
+      )
+    } else {
+      client.put(
+        path: "/posts/\(post.id)",
+        parameters: params,
+        success: { (result) in
+          //TODO: handle this
+        },
+        failure: {
+          //TODO: handle this
+        }
+      )
+    }
+  }
+  
+  class func delete(post: Post) {
+    let client = GhostRESTClient()
+    client.delete(
       path: "/posts/\(post.id)",
-      parameters: params,
-      success: { (result) in
-        //TODO: handle this
-      },
-      failure: {
-        //TODO: handle this
-      }
+      success: { () in },
+      failure: { }
     )
   }
   

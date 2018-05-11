@@ -36,6 +36,7 @@
 		7F6375EA209019600051F4A5 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375E9209019600051F4A5 /* PostListViewController.swift */; };
 		7F6375ED209019A60051F4A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375EC209019A60051F4A5 /* Post.swift */; };
 		7F6375FA2090AAEA0051F4A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375F92090AAEA0051F4A5 /* TabBarController.swift */; };
+		7F74302820A5EFBB000AF2AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F74302720A5EFBB000AF2AF /* Localizable.strings */; };
 		7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */; };
 		7F8CC11420916B84005D8E2E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8CC11320916B83005D8E2E /* WebKit.framework */; };
 		7F91355B20A4D8E00035A487 /* GhostRESTClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F91355A20A4D8E00035A487 /* GhostRESTClientTests.swift */; };
@@ -136,6 +137,7 @@
 		7F6375E9209019600051F4A5 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		7F6375EC209019A60051F4A5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		7F6375F92090AAEA0051F4A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		7F74302720A5EFBB000AF2AF /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		7F8CC11320916B83005D8E2E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		7F91355A20A4D8E00035A487 /* GhostRESTClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostRESTClientTests.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				7F6375BC209018520051F4A5 /* ViewController.swift */,
 				7F26E3A620991767001437FF /* Constants.swift */,
 				7F4DE73C20A5074600DFDCD3 /* Secrets.swift */,
+				7F74302720A5EFBB000AF2AF /* Localizable.strings */,
 			);
 			path = Ghost;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 			files = (
 				7F6375C5209018530051F4A5 /* LaunchScreen.storyboard in Resources */,
 				7F6375C2209018530051F4A5 /* Assets.xcassets in Resources */,
+				7F74302820A5EFBB000AF2AF /* Localizable.strings in Resources */,
 				7F20C10C20A460930076DCE1 /* 1Password.xcassets in Resources */,
 				7F6375C0209018520051F4A5 /* Main.storyboard in Resources */,
 			);

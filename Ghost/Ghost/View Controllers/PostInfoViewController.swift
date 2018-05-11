@@ -14,6 +14,10 @@ class PostInfoViewController: GhostBaseDetailViewController {
     containerViewController?.editPostViewController?.save()
   }
   
+  @IBAction func delete() {
+    containerViewController?.editPostViewController?.delete()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.layer.shadowColor = UIColor.black.cgColor

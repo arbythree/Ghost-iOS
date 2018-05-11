@@ -11,6 +11,10 @@
 import Foundation
 import Alamofire
 
+enum PostStatus : String {
+  case Draft = "draft", Published = "published"
+}
+
 class Post {
   var id:           String = "";
   var title:        String = "";
@@ -23,7 +27,7 @@ class Post {
   var published_at: Date?;
   var published: Bool! {
     get {
-      return status == "published";
+      return status == PostStatus.Published.rawValue;
     }
   }
   
@@ -31,6 +35,16 @@ class Post {
     get {
       return id == ""
     }
+  }
+  
+  init(json: NSDictionary) {
+    PostSerializer.populateFromJSON(post: self, json: json)
+  }
+  
+  init() {
+    title = NSLocalizedString("NEW_POST_TITLE", comment: "")
+    markdown = ""
+    status = PostStatus.Draft.rawValue
   }
   
   //
@@ -64,10 +78,6 @@ class Post {
     }
   }
   
-  init(json: NSDictionary) {
-    PostSerializer.populateFromJSON(post: self, json: json)
-  }
-  
   //
   // return all Posts
   //
@@ -92,6 +102,11 @@ class Post {
   
   // TODO: move this out to the PostSerializer
   func reload(success: @escaping () -> Void) {
+    if new {
+      success()
+      return
+    }
+    
     let client = GhostRESTClient()
     let params: Parameters = [ "formats": "html, plaintext, mobiledoc", "status": "all" ]
     client.getJSON(path: "/posts/\(id)/", parameters: params, completionHandler: { responseJSON in
@@ -105,5 +120,9 @@ class Post {
   
   func save() {
     PostSerializer.save(post: self)
+  }
+  
+  func destroy() {
+    PostSerializer.delete(post: self)
   }
 }

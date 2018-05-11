@@ -16,7 +16,10 @@ class PostListViewController: GhostBaseDetailViewController, UITableViewDelegate
   @IBOutlet weak var newPostButton: UIButton!;
   
   @IBAction func newPost() {
-    
+    let post = Post()
+    _posts.insert(post, at: 0)
+    tableView.reloadData()
+    selectFirstPost()
   }
   
   override func viewDidLoad() {
@@ -32,9 +35,7 @@ class PostListViewController: GhostBaseDetailViewController, UITableViewDelegate
       
       // select the first cell
       if posts.count > 0 {
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .top)
-        self.tableView(self.tableView, didSelectRowAt: indexPath)
+        self.selectFirstPost()
       }
     })
   }
@@ -64,5 +65,11 @@ class PostListViewController: GhostBaseDetailViewController, UITableViewDelegate
   
   @IBAction func toggleSettings() {
     self.containerViewController?.toggleSideMenu()
+  }
+  
+  private func selectFirstPost() {
+    let indexPath = IndexPath(row: 0, section: 0)
+    self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .top)
+    self.tableView(self.tableView, didSelectRowAt: indexPath)
   }
 }

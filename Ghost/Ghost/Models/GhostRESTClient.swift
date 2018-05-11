@@ -63,12 +63,13 @@ class GhostRESTClient {
     }
   }
   
-  func post(path: String, parameters: [String: Any], success: @escaping (String) -> Void, failure:() -> Void) {
+  func post(path: String, parameters: [String: Any], success: @escaping (HTTPURLResponse) -> Void, failure: @escaping () -> Void) {
     Alamofire.request(fullURL(path: path), method: .post, parameters: parameters, headers: authorizationHeader()).responseJSON { response in
       let status = response.response?.statusCode;
-      if (status == 200) {
-//        let json = response.result.value as! NSDictionary;
-        success("")
+      if (status == 201) {
+        success(response.response!)
+      } else {
+        failure()
       }
     }
   }
@@ -82,6 +83,12 @@ class GhostRESTClient {
       } else {
         failure()
       }
+    }
+  }
+  
+  func delete(path: String, success: @escaping () -> Void, failure: @escaping () -> Void) {
+    Alamofire.request(fullURL(path: path), method: .delete, headers: authorizationHeader()).responseJSON { response in
+      
     }
   }
   

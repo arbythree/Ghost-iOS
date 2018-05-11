@@ -29,6 +29,7 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
         self.renderPreview()
         self.isDirty = false
         self.bodyTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        self.bodyTextView.becomeFirstResponder()
       }
     }
   }
@@ -65,6 +66,11 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     bodyTextView.resignFirstResponder()
     post?.markdown = bodyTextView.text
     post?.save()
+  }
+  
+  func delete() {
+    // display an action sheet to confirm
+    post?.destroy()
   }
   
   //

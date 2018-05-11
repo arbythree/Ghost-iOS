@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Ghost
+
+  Created by Ray Bradley on 5/11/18.
+  Copyright © 2018 Analemma Heavy Industries. All rights reserved.
+*/
+
+"NEW_POST_TITLE" = "New Post";
+"SAVE_POST"      = "Save";
+"UPDATE_POST"    = "Update";

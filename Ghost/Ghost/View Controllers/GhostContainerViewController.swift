@@ -14,7 +14,8 @@ class GhostContainerViewController: UIViewController {
   @IBOutlet weak var postListWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var editPaneWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var previewWidthConstraint:  NSLayoutConstraint!
-  @IBOutlet weak var infoWidthConstraint:     NSLayoutConstraint!
+//  @IBOutlet weak var infoWidthConstraint:     NSLayoutConstraint!
+  @IBOutlet weak var infoLeftConstraint: NSLayoutConstraint!
   @IBOutlet weak var sideMenuContainer: UIView!
   @IBOutlet weak var postListContainer: UIView!
   @IBOutlet weak var editPaneContainer: UIView!
@@ -35,8 +36,8 @@ class GhostContainerViewController: UIViewController {
   
   // show/hide the Info panel on the far right
   @IBAction func toggleInfo() {
-    let targetWidth: CGFloat = infoWidthConstraint.constant == 0 ? 210 : 0
-    infoWidthConstraint.constant = targetWidth
+    let targetConstant: CGFloat = infoLeftConstraint.constant == 0 ? self.view.bounds.size.width : 0
+    infoLeftConstraint.constant = targetConstant
   }
   
   @IBAction func toggleEditMode() {
@@ -62,7 +63,7 @@ class GhostContainerViewController: UIViewController {
     super.viewDidLoad()
     
     // initial layout
-    infoWidthConstraint.constant = 0
+    infoLeftConstraint.constant = self.view.bounds.size.width
     sideMenuWidthConstraint.constant = 0
   }
   

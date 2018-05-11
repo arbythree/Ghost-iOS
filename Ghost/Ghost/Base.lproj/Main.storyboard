@@ -45,34 +45,56 @@
         <scene sceneID="MaT-6m-M7l">
             <objects>
                 <viewController id="Dlz-Zt-c4L" customClass="PostInfoViewController" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Up8-TT-9eu">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="768"/>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Up8-TT-9eu">
+                        <rect key="frame" x="0.0" y="0.0" width="624" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Km-Tk-Bs5">
-                                <rect key="frame" x="16" y="77" width="168" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="Update">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="save" destination="Dlz-Zt-c4L" eventType="touchUpInside" id="g55-Y6-Xre"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRC-xz-evS">
-                                <rect key="frame" x="154" y="20" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="✖️">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="hide" destination="Dlz-Zt-c4L" eventType="touchUpInside" id="Shs-4q-EJ9"/>
-                                </connections>
-                            </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BvQ-YB-ZOM">
+                                <rect key="frame" x="384" y="0.0" width="240" height="768"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRC-xz-evS">
+                                        <rect key="frame" x="202" y="28" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="✖️">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="hide" destination="Dlz-Zt-c4L" eventType="touchUpInside" id="Shs-4q-EJ9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Km-Tk-Bs5">
+                                        <rect key="frame" x="36" y="66" width="168" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" name="ghostBlue"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Update">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="save" destination="Dlz-Zt-c4L" eventType="touchUpInside" id="g55-Y6-Xre"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eci-lf-aLr">
+                                        <rect key="frame" x="8" y="730" width="224" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                        <state key="normal" title="DELETE POST">
+                                            <color key="titleColor" name="ghostRed"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Q9U-OC-P7k"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.1523705051369863" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BvQ-YB-ZOM" firstAttribute="bottom" secondItem="p7H-hM-CZv" secondAttribute="bottom" id="i3A-aa-d1M"/>
+                            <constraint firstItem="BvQ-YB-ZOM" firstAttribute="top" secondItem="Up8-TT-9eu" secondAttribute="top" id="oCg-Rl-wne"/>
+                            <constraint firstItem="BvQ-YB-ZOM" firstAttribute="trailing" secondItem="p7H-hM-CZv" secondAttribute="trailing" id="y0g-0O-h6v"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="p7H-hM-CZv"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
@@ -89,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kam-vl-TJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2668" y="-3132"/>
+            <point key="canvasLocation" x="-2512.5" y="-3131.25"/>
         </scene>
         <!--Post List View Controller-->
         <scene sceneID="ntR-yI-NVh">
@@ -362,10 +384,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hzq-Y5-JXH" userLabel="Info Panel">
-                                <rect key="frame" x="824" y="0.0" width="200" height="768"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="o34-NU-vAQ"/>
-                                </constraints>
+                                <rect key="frame" x="400" y="0.0" width="624" height="768"/>
                                 <connections>
                                     <segue destination="Dlz-Zt-c4L" kind="embed" identifier="info" id="vhu-ja-w6c"/>
                                 </connections>
@@ -386,11 +405,12 @@
                             <constraint firstItem="Ovo-DL-A4n" firstAttribute="bottom" secondItem="ME4-Id-I5G" secondAttribute="bottom" id="ieL-51-BwY"/>
                             <constraint firstItem="ME4-Id-I5G" firstAttribute="leading" secondItem="GmM-De-644" secondAttribute="trailing" id="nQK-fD-OJt"/>
                             <constraint firstItem="Hzq-Y5-JXH" firstAttribute="top" secondItem="f8P-6Q-teW" secondAttribute="top" id="w2g-ly-aAj"/>
+                            <constraint firstItem="Hzq-Y5-JXH" firstAttribute="leading" secondItem="Ovo-DL-A4n" secondAttribute="leading" constant="400" id="zVA-2W-cGI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ovo-DL-A4n"/>
                     </view>
                     <connections>
-                        <outlet property="infoWidthConstraint" destination="o34-NU-vAQ" id="6xJ-ij-HQN"/>
+                        <outlet property="infoLeftConstraint" destination="zVA-2W-cGI" id="R8k-1Y-plD"/>
                         <outlet property="postListWidthConstraint" destination="GNj-9J-39b" id="rzI-a1-U6e"/>
                         <outlet property="sideMenuWidthConstraint" destination="HLu-0t-Odr" id="x1y-eu-gsz"/>
                     </connections>
@@ -527,11 +547,17 @@
         <namedColor name="ghostBlue">
             <color red="0.24313725490196078" green="0.69019607843137254" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="ghostBlue">
+            <color red="0.24313725490196078" green="0.69019607843137254" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="ghostGreen">
             <color red="0.64313725490196083" green="0.81568627450980391" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ghostLightGrey">
             <color red="0.89803921568627454" green="0.93725490196078431" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ghostRed">
+            <color red="0.94117647058823528" green="0.32156862745098042" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ghostRed">
             <color red="0.94117647058823528" green="0.32156862745098042" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
