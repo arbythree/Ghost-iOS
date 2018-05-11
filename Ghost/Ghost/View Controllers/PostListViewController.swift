@@ -13,8 +13,19 @@ class PostListViewController: GhostBaseDetailViewController, UITableViewDelegate
   private var _posts: [Post] = [];
   private var _selectedPost: Post?;
   @IBOutlet weak var tableView: UITableView!;
+  @IBOutlet weak var newPostButton: UIButton!;
+  
+  @IBAction func newPost() {
+    
+  }
   
   override func viewDidLoad() {
+    newPostButton.layer.shadowColor   = UIColor.black.cgColor
+    newPostButton.layer.shadowRadius  = 1
+    newPostButton.layer.shadowOffset  = CGSize(width: 0, height: 2)
+    newPostButton.layer.shadowOpacity = 0.3
+    newPostButton.layer.masksToBounds = false
+    
     Post.all(success: { posts in
       self._posts = posts
       self.tableView.reloadData()

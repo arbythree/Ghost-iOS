@@ -113,21 +113,32 @@ class GhostRESTClient {
     )
   }
   
-  // this isn't right...need to figure out how to get the client_secret programmatically
+  //
+  // hackety-hack...it's not entirely clear how or why the client secret is supposed to work. It looks like we can
+  // just hit the /configuration public endpoint end get it. Not very secret?
+  //
   func fetchAuthToken(username: String, password: String, success: @escaping (String) -> Void, failure:() -> Void) -> Void {
-    let params = [
-      "grant_type":    "password",
-      "client_id":     "ghost-admin",
-      "client_secret": Secrets.ghostSecretKey,
-      "username":      username,
-      "password":      password
-    ];
-    
-    Alamofire.request(fullURL(path: "/authentication/token"), method: .post, parameters: params).responseJSON { response in
-      let status = response.response?.statusCode;
-      if (status == 200) {
-        let json = response.result.value as! NSDictionary;
-        success(json["access_token"] as! String);
+    Alamofire.request(fullURL(path: "/configuration")).responseJSON { response in
+      let json     = response.result.value as! NSDictionary
+      let configs  = json["configuration"] as! NSArray
+      let config   = configs[0] as! NSDictionary
+      let secret   = config["clientSecret"] as! String
+      let clientId = config["clientId"] as! String
+
+      let params = [
+        "grant_type":    "password",
+        "client_id":     clientId,
+        "client_secret": secret,
+        "username":      username,
+        "password":      password
+      ];
+
+      Alamofire.request(self.fullURL(path: "/authentication/token"), method: .post, parameters: params).responseJSON { response in
+        let status = response.response?.statusCode;
+        if (status == 200) {
+          let json = response.result.value as! NSDictionary;
+          success(json["access_token"] as! String);
+        }
       }
     }
   }

@@ -28,6 +28,7 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
         self.populatePostData()
         self.renderPreview()
         self.isDirty = false
+        self.bodyTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
       }
     }
   }
@@ -76,6 +77,10 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     
     setEditorPadding()
     initializeInputAccessory()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    setEditorPadding()
   }
   
   @objc func formatItalic() {
@@ -258,14 +263,14 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   // of the edit pane
   //
   private func setEditorPadding() {
-    // lay out the text input area
-    let verticalPadding: CGFloat = 60
-    var horizontalPadding: CGFloat = 120
+    let maxTextWidth: CGFloat = 400 // widest possible text
+    let minPadding: CGFloat = 30 // smallest possible padding
+    let viewWidth = bodyTextView.bounds.size.width
+    let textWidth = min(viewWidth - (minPadding * 2), maxTextWidth)
+    let horizontalPadding = (viewWidth - textWidth) / 2.0
+    let verticalPadding: CGFloat = minPadding * 2
     
-    if previewWidthConstraint.constant > 0 {
-      horizontalPadding = 30
-    }
-    
+    // now apply it
     bodyTextView.textContainerInset = UIEdgeInsetsMake(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding)
   }
 }
