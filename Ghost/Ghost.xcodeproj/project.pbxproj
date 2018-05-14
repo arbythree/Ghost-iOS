@@ -43,6 +43,8 @@
 		7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */; };
 		7F8CC11420916B84005D8E2E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8CC11320916B83005D8E2E /* WebKit.framework */; };
 		7F91355B20A4D8E00035A487 /* GhostRESTClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F91355A20A4D8E00035A487 /* GhostRESTClientTests.swift */; };
+		7F91355D20A9EAA20035A487 /* TagSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F91355C20A9EAA20035A487 /* TagSerializer.swift */; };
+		7F91355F20A9EBBC0035A487 /* PostTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F91355E20A9EBBC0035A487 /* PostTagsCell.swift */; };
 		7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A42090CE2200B43914 /* GhostRESTClient.swift */; };
 		7FC888A72090DEC300B43914 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A62090DEC300B43914 /* LoginViewController.swift */; };
 		7FC888A92090E0B000B43914 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC888A82090E0B000B43914 /* AuthenticationManager.swift */; };
@@ -147,6 +149,8 @@
 		7F8CC10F209167D2005D8E2E /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		7F8CC11320916B83005D8E2E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		7F91355A20A4D8E00035A487 /* GhostRESTClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostRESTClientTests.swift; sourceTree = "<group>"; };
+		7F91355C20A9EAA20035A487 /* TagSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSerializer.swift; sourceTree = "<group>"; };
+		7F91355E20A9EBBC0035A487 /* PostTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTagsCell.swift; sourceTree = "<group>"; };
 		7FC888A42090CE2200B43914 /* GhostRESTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostRESTClient.swift; sourceTree = "<group>"; };
 		7FC888A62090DEC300B43914 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7FC888A82090E0B000B43914 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				7F3BB8ED209B3EAB009E6EE7 /* PostSerializer.swift */,
+				7F91355C20A9EAA20035A487 /* TagSerializer.swift */,
 			);
 			path = Serializers;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				7F5E7A5D20A6290A00E638A7 /* PostInfoEditCell.swift */,
 				7F5E7A5F20A62C9D00E638A7 /* PostInfoEditCellMultiLine.swift */,
 				7F5E7A6120A6305300E638A7 /* PostInfoStatusCell.swift */,
+				7F91355E20A9EBBC0035A487 /* PostTagsCell.swift */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 			files = (
 				7F3BB8EB209B309F009E6EE7 /* PostInfoViewController.swift in Sources */,
 				7F5E7A5E20A6290A00E638A7 /* PostInfoEditCell.swift in Sources */,
+				7F91355D20A9EAA20035A487 /* TagSerializer.swift in Sources */,
 				7FC888AF20910BE700B43914 /* MoreViewController.swift in Sources */,
 				7F2689BA209CE14B00D82752 /* PreviewViewController.swift in Sources */,
 				7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */,
@@ -516,6 +523,7 @@
 				7F35F0E920976F9200510BDD /* User.swift in Sources */,
 				7F35F0EF2098CCB400510BDD /* GhostContainerViewController.swift in Sources */,
 				7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */,
+				7F91355F20A9EBBC0035A487 /* PostTagsCell.swift in Sources */,
 				7F8CC110209167D2005D8E2E /* EditPostViewController.swift in Sources */,
 				7F3BB8E7209AA2B2009E6EE7 /* Upload.swift in Sources */,
 				7FC888B2209121E700B43914 /* PostTableViewCell.swift in Sources */,

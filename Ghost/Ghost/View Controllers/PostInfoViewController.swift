@@ -37,7 +37,7 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
   
   // MARK: delegates
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    return 4
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,6 +58,8 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
         segmentIndex = 2
       }
       (cell as! PostInfoStatusCell).statusSegmentView.selectedSegmentIndex = segmentIndex
+    case 3:
+      cell = tableView.dequeueReusableCell(withIdentifier: "postTags")!
     default:
       break
     }
@@ -73,6 +75,8 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
       return 80
     case 2:
       return 50
+    case 3:
+      return 80
     default:
       return 44
     }

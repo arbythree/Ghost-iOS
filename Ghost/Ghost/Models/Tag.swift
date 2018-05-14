@@ -9,6 +9,8 @@
 import Foundation
 
 class Tag {
+  var name: String = ""
+  
   class func all(success: @escaping ([Tag]) -> Void) -> Void {
     let client = GhostRESTClient();
     
@@ -26,7 +28,7 @@ class Tag {
   }
   
   init(json: NSDictionary) {
-    
+    TagSerializer.populateFromJSON(tag: self, json: json)
   }
   
   // return all Tags
