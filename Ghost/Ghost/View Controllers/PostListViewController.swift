@@ -59,8 +59,10 @@ class PostListViewController: GhostBaseDetailViewController, UITableViewDelegate
   }
   
   func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    let cell = tableView.cellForRow(at: indexPath) as! PostTableViewCell
-    cell.selectedView.isHidden = true
+    let cell = tableView.cellForRow(at: indexPath)
+    if cell != nil {
+      (cell as! PostTableViewCell).selectedView.isHidden = true
+    }
   }
   
   @IBAction func toggleSettings() {

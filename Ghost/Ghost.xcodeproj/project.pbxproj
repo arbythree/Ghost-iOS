@@ -26,6 +26,9 @@
 		7F3BB8EB209B309F009E6EE7 /* PostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BB8EA209B309F009E6EE7 /* PostInfoViewController.swift */; };
 		7F3BB8EE209B3EAB009E6EE7 /* PostSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BB8ED209B3EAB009E6EE7 /* PostSerializer.swift */; };
 		7F4DE73D20A5074600DFDCD3 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4DE73C20A5074600DFDCD3 /* Secrets.swift */; };
+		7F5E7A5E20A6290A00E638A7 /* PostInfoEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5E7A5D20A6290A00E638A7 /* PostInfoEditCell.swift */; };
+		7F5E7A6020A62C9D00E638A7 /* PostInfoEditCellMultiLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5E7A5F20A62C9D00E638A7 /* PostInfoEditCellMultiLine.swift */; };
+		7F5E7A6220A6305300E638A7 /* PostInfoStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5E7A6120A6305300E638A7 /* PostInfoStatusCell.swift */; };
 		7F6375BB209018520051F4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375BA209018520051F4A5 /* AppDelegate.swift */; };
 		7F6375BD209018520051F4A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6375BC209018520051F4A5 /* ViewController.swift */; };
 		7F6375C0209018520051F4A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6375BE209018520051F4A5 /* Main.storyboard */; };
@@ -121,6 +124,9 @@
 		7F3BB8EA209B309F009E6EE7 /* PostInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoViewController.swift; sourceTree = "<group>"; };
 		7F3BB8ED209B3EAB009E6EE7 /* PostSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSerializer.swift; sourceTree = "<group>"; };
 		7F4DE73C20A5074600DFDCD3 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		7F5E7A5D20A6290A00E638A7 /* PostInfoEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoEditCell.swift; sourceTree = "<group>"; };
+		7F5E7A5F20A62C9D00E638A7 /* PostInfoEditCellMultiLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoEditCellMultiLine.swift; sourceTree = "<group>"; };
+		7F5E7A6120A6305300E638A7 /* PostInfoStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoStatusCell.swift; sourceTree = "<group>"; };
 		7F6375B7209018520051F4A5 /* Ghost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ghost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6375BA209018520051F4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6375BC209018520051F4A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +316,9 @@
 			isa = PBXGroup;
 			children = (
 				7FC888B1209121E700B43914 /* PostTableViewCell.swift */,
+				7F5E7A5D20A6290A00E638A7 /* PostInfoEditCell.swift */,
+				7F5E7A5F20A62C9D00E638A7 /* PostInfoEditCellMultiLine.swift */,
+				7F5E7A6120A6305300E638A7 /* PostInfoStatusCell.swift */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -491,12 +500,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F3BB8EB209B309F009E6EE7 /* PostInfoViewController.swift in Sources */,
+				7F5E7A5E20A6290A00E638A7 /* PostInfoEditCell.swift in Sources */,
 				7FC888AF20910BE700B43914 /* MoreViewController.swift in Sources */,
 				7F2689BA209CE14B00D82752 /* PreviewViewController.swift in Sources */,
 				7F2689B82098E3AC00D82752 /* GhostBaseDetailViewController.swift in Sources */,
+				7F5E7A6220A6305300E638A7 /* PostInfoStatusCell.swift in Sources */,
 				7F3BB8EE209B3EAB009E6EE7 /* PostSerializer.swift in Sources */,
 				7FC888A72090DEC300B43914 /* LoginViewController.swift in Sources */,
 				7FC888A92090E0B000B43914 /* AuthenticationManager.swift in Sources */,
+				7F5E7A6020A62C9D00E638A7 /* PostInfoEditCellMultiLine.swift in Sources */,
 				7F6375EA209019600051F4A5 /* PostListViewController.swift in Sources */,
 				7F6375BD209018520051F4A5 /* ViewController.swift in Sources */,
 				7FC888A52090CE2200B43914 /* GhostRESTClient.swift in Sources */,

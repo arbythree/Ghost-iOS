@@ -204,17 +204,22 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
   private func populatePostData() {
     if post == nil { return }
     self.title = post?.title
+    
+    // TODO: set up KVO to watch for post title changes
 
+    // style the editing area
     let attrString = NSMutableAttributedString(string: post!.markdown!)
     let paragraphStyle = NSMutableParagraphStyle()
     let menloFont = UIFont(name: "Menlo", size: 16)
     let allTextRange = NSRange.init(location: 0, length: post!.markdown!.count)
-    
     paragraphStyle.lineSpacing = 24
     attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: allTextRange)
     attrString.addAttribute(.font, value: menloFont as Any, range: allTextRange)
-    
     bodyTextView.attributedText = attrString
+    
+    // sync the info panel
+    let infoPanel = self.containerViewController!.infoViewController!
+    infoPanel.post = post!
   }
   
   private func renderPreview() {

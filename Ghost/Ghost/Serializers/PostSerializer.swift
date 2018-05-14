@@ -70,9 +70,13 @@ class PostSerializer {
     let formatter = DateFormatter();
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
     
-    post.id     = json["id"]     as! String;
-    post.title  = json["title"]  as! String;
-    post.status = json["status"] as! String;
+    post.id     = json["id"]     as! String
+    post.title  = json["title"]  as! String
+    post.status = json["status"] as! String
+    if json["custom_excerpt"] is NSNull {
+    } else {
+      post.excerpt = json["custom_excerpt"] as! String
+    }
     
     let authorJSON = json["author"] as! NSDictionary;
     post.author = authorJSON["name"] as! String;

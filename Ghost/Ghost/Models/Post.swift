@@ -20,6 +20,7 @@ class Post {
   var title:        String = "";
   var author:       String = "";
   var status:       String = "";
+  var excerpt:      String = "";
   var markdown:     String?
   var tags:         String = "";
   var updated_at:   Date = Date();
@@ -34,6 +35,18 @@ class Post {
   var new: Bool! {
     get {
       return id == ""
+    }
+  }
+  
+  var isDraft: Bool! {
+    get {
+      return status == PostStatus.Draft.rawValue
+    }
+  }
+  
+  var isPublished: Bool! {
+    get {
+      return status == PostStatus.Published.rawValue
     }
   }
   

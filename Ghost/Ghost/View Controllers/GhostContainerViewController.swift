@@ -14,18 +14,22 @@ class GhostContainerViewController: UIViewController {
   @IBOutlet weak var postListWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var editPaneWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var previewWidthConstraint:  NSLayoutConstraint!
-//  @IBOutlet weak var infoWidthConstraint:     NSLayoutConstraint!
   @IBOutlet weak var infoLeftConstraint: NSLayoutConstraint!
   @IBOutlet weak var sideMenuContainer: UIView!
   @IBOutlet weak var postListContainer: UIView!
   @IBOutlet weak var editPaneContainer: UIView!
   @IBOutlet weak var previewContainer:  UIView!
+  @IBOutlet weak var sideMenuBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var postListBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var editPaneBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var infoPaneBottomConstraint: NSLayoutConstraint!
   private var _sideMenuWidth: CGFloat = 0
   private var _postListWidth: CGFloat = 0
   private var _editing = false
   private var _fullEditMode = false
   var editPostViewController: EditPostViewController?
   var previewViewController: PreviewViewController?
+  var infoViewController: PostInfoViewController?
   
   // MARK: IBActions
   // show/hide the side menu on the far left
@@ -65,6 +69,28 @@ class GhostContainerViewController: UIViewController {
     // initial layout
     infoLeftConstraint.constant = self.view.bounds.size.width
     sideMenuWidthConstraint.constant = 0
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+  }
+  
+  //
+  // resize the four main panes (settings, posts, edit, info) to reflect the keyboard state
+  //
+  @objc private func keyboardNotification(notification: NSNotification) {
+    if let userInfo = notification.userInfo {
+      let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+      let keyboardHeight = endFrame!.size.height
+      let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+      sideMenuBottomConstraint.constant = keyboardHeight
+      postListBottomConstraint.constant = keyboardHeight
+      editPaneBottomConstraint.constant = keyboardHeight
+      infoPaneBottomConstraint.constant = keyboardHeight
+
+      UIView.animate(withDuration: duration) {
+        self.view.layoutIfNeeded()
+      }
+    }
   }
   
   func toggleFullEditMode() {
@@ -105,6 +131,7 @@ class GhostContainerViewController: UIViewController {
       editPostViewController = destination.childViewControllers[0] as? EditPostViewController
     case "info":
       (destination as! GhostBaseDetailViewController).containerViewController = self
+      infoViewController = destination as? PostInfoViewController
     case "preview":
       (destination.childViewControllers[0] as! GhostBaseDetailViewController).containerViewController = self
       previewViewController = destination.childViewControllers[0] as? PreviewViewController
