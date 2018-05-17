@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PostInfoEditCell: UITableViewCell {
+class PostInfoEditCell: PostInfoBaseCell {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var valueTextField: UITextField!
 }

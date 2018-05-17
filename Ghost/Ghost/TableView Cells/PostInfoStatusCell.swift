@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PostInfoStatusCell: UITableViewCell {
+class PostInfoStatusCell: PostInfoBaseCell {
   @IBOutlet weak var statusSegmentView: UISegmentedControl!
   @IBOutlet weak var datePicker: UIDatePicker!
 }

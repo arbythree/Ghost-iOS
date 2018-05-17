@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PostInfoEditCellMultiLine: UITableViewCell {
+class PostInfoEditCellMultiLine: PostInfoBaseCell {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var valueTextView: UITextView!
 }

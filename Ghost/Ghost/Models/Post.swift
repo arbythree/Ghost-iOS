@@ -94,7 +94,7 @@ class Post {
   //
   // return all Posts
   //
-  class func all(success: @escaping ([Post]) -> Void) -> Void {
+  class func all(success: @escaping ([Post]) -> Void) {
     let client = GhostRESTClient();
     let params: Parameters = [
       "status" : "all",

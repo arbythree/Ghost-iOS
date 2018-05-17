@@ -30,9 +30,4 @@ class Tag {
   init(json: NSDictionary) {
     TagSerializer.populateFromJSON(tag: self, json: json)
   }
-  
-  // return all Tags
-  class func all() -> [Tag] {
-    return []
-  }
 }

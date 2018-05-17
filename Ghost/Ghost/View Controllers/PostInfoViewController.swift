@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSource, UITableViewDelegate {
+  private var _tags: [Tag] = []
   var post: Post = Post() {
     didSet {
       tableView.reloadData()
@@ -29,6 +30,10 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
   override func viewDidLoad() {
     super.viewDidLoad()
     view.layer.shadowColor = UIColor.black.cgColor
+    
+    Tag.all { tags in
+      self._tags = tags
+    }
   }
   
   @IBAction func hide() {
@@ -37,46 +42,74 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
   
   // MARK: delegates
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 4
+    switch(section) {
+    case 0:
+      return 3
+    case 1:
+      return _tags.count
+    default:
+      return 0
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     var cell = UITableViewCell()
     
-    switch(indexPath.row) {
+    switch(indexPath.section) {
     case 0:
-      cell = tableView.dequeueReusableCell(withIdentifier: "postEditCellSingleLine")!
-      (cell as! PostInfoEditCell).valueTextField.text = post.title
-    case 1:
-      cell = tableView.dequeueReusableCell(withIdentifier: "postEditCellMultiLine")!
-      (cell as! PostInfoEditCellMultiLine).valueTextView.text = post.excerpt
-    case 2:
-      cell = tableView.dequeueReusableCell(withIdentifier: "postInfoStatus")!
-      (cell as! PostInfoStatusCell).datePicker.date = Date()
-      var segmentIndex = 0
-      if post.isDraft {
-        segmentIndex = 2
+      switch(indexPath.row) {
+      case 0:
+        cell = tableView.dequeueReusableCell(withIdentifier: "postEditCellSingleLine")!
+        (cell as! PostInfoEditCell).valueTextField.text = post.title
+      case 1:
+        cell = tableView.dequeueReusableCell(withIdentifier: "postEditCellMultiLine")!
+        (cell as! PostInfoEditCellMultiLine).valueTextView.text = post.excerpt
+      case 2:
+        cell = tableView.dequeueReusableCell(withIdentifier: "postInfoStatus")!
+        (cell as! PostInfoStatusCell).datePicker.date = Date()
+        var segmentIndex = 0
+        if post.isDraft {
+          segmentIndex = 2
+        }
+        (cell as! PostInfoStatusCell).statusSegmentView.selectedSegmentIndex = segmentIndex
+      default:
+        break
       }
-      (cell as! PostInfoStatusCell).statusSegmentView.selectedSegmentIndex = segmentIndex
-    case 3:
-      cell = tableView.dequeueReusableCell(withIdentifier: "postTags")!
+      
+    // tags section
+    case 1:
+      cell = tableView.dequeueReusableCell(withIdentifier: "postInfoTag")!
+      cell.textLabel?.text = self._tags[indexPath.row].name
+      cell.accessoryType = .checkmark // TODO: show this conditionally
+      
     default:
-      break
+      break;
     }
     
+    (cell as! PostInfoBaseCell).post = self.post
+    (cell as! PostInfoBaseCell).postInfoViewController = self
     return cell
   }
   
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    switch(indexPath.row) {
+    switch(indexPath.section) {
     case 0:
-      return 72
+      switch(indexPath.row) {
+      case 0:
+        return 72  // title
+      case 1:
+        return 80  // excerpt
+      case 2:
+        return 50  // status
+      default:
+        return 44
+      }
     case 1:
-      return 80
-    case 2:
-      return 50
-    case 3:
-      return 80
+      return 44
     default:
       return 44
     }
