@@ -79,8 +79,11 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
     // tags section
     case 1:
       cell = tableView.dequeueReusableCell(withIdentifier: "postInfoTag")!
-      cell.textLabel?.text = self._tags[indexPath.row].name
-      cell.accessoryType = .checkmark // TODO: show this conditionally
+      let tagName = self._tags[indexPath.row].name
+      cell.textLabel?.text = tagName
+      if post.tagNames.contains(tagName) {
+        cell.accessoryType = .checkmark
+      }
       
     default:
       break;
@@ -89,6 +92,17 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
     (cell as! PostInfoBaseCell).post = self.post
     (cell as! PostInfoBaseCell).postInfoViewController = self
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    switch(section) {
+    case 0:
+      return "Settings"
+    case 1:
+      return "Tags"
+    default:
+      return ""
+    }
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {

@@ -22,7 +22,7 @@ class Post {
   var status:       String = "";
   var excerpt:      String = "";
   var markdown:     String?
-  var tags:         String = "";
+  var tagNames:     [String] = [];
   var updated_at:   Date = Date();
   var created_at:   Date = Date();
   var published_at: Date?;

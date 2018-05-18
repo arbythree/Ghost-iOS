@@ -77,16 +77,17 @@ class PostSerializer {
     } else {
       post.excerpt = json["custom_excerpt"] as! String
     }
-    
+
+    // author
     let authorJSON = json["author"] as! NSDictionary;
     post.author = authorJSON["name"] as! String;
-    
-    var tagNames: [String] = [];
+
+    // tags
+    post.tagNames = []
     let tagsJSON = json["tags"] as! [[String: Any]];
     for tagJSON in tagsJSON {
-      tagNames.append(tagJSON["name"] as! String);
+      post.tagNames.append(tagJSON["name"] as! String);
     }
-    post.tags = tagNames.joined(separator: ", ")
     
     // pull dates
     let ua = json["updated_at"]   as! String;
