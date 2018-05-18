@@ -52,6 +52,25 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
     }
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // if it was a tag
+    if indexPath.section == 1 {
+      let cell = tableView.cellForRow(at: indexPath)!
+      let tagName = cell.textLabel!.text!
+      let isChecked = cell.accessoryType == UITableViewCellAccessoryType.checkmark
+      
+      if isChecked {
+        cell.accessoryType = .none
+        if !post.tagNames.contains(tagName) {
+          post.tagNames.append(tagName)
+        }
+      } else {
+        cell.accessoryType = .checkmark
+        post.tagNames = post.tagNames.filter() { $0 != tagName } // remove the tapped tagName
+      }
+    }
+  }
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     var cell = UITableViewCell()
     

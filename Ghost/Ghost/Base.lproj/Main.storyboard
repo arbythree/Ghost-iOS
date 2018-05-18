@@ -212,7 +212,7 @@
                                                     <outlet property="statusSegmentView" destination="kuZ-01-AnM" id="UxU-Wd-6w3"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postInfoTag" textLabel="1rH-jU-ja7" rowHeight="44" style="IBUITableViewCellStyleDefault" id="7ei-y3-TDS" customClass="PostInfoTagsCell" customModule="Ghost" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="postInfoTag" textLabel="1rH-jU-ja7" rowHeight="44" style="IBUITableViewCellStyleDefault" id="7ei-y3-TDS" customClass="PostInfoTagsCell" customModule="Ghost" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="464" width="270" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7ei-y3-TDS" id="zKY-qd-BD1">
