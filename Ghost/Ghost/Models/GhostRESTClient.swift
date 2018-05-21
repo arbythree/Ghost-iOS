@@ -75,6 +75,8 @@ class GhostRESTClient {
   }
   
   func put(path: String, parameters: [String: Any], success: @escaping (NSDictionary) -> Void, failure: @escaping () -> Void) {
+    var headers = authorizationHeader()
+    
     Alamofire.request(fullURL(path: path), method: .put, parameters: parameters, headers: authorizationHeader()).responseJSON { response in
       
       let request = response.request

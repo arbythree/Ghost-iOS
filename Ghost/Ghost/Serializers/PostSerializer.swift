@@ -56,7 +56,7 @@ class PostSerializer {
       )
     } else {
       client.put(
-        path: "/posts/\(post.id)/?include=tags",
+        path: "/posts/\(post.id)/",
         parameters: params,
         success: { (result) in
           //TODO: handle this
