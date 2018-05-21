@@ -422,6 +422,7 @@
                                             <outlet property="authorLabel" destination="yqp-PB-flY" id="hIa-cz-VQH"/>
                                             <outlet property="authorLabelPaddingConstraint" destination="vgQ-7k-ejh" id="AiI-MK-muc"/>
                                             <outlet property="selectedView" destination="rjC-2y-AJG" id="PQr-cH-Oms"/>
+                                            <outlet property="statusBadge" destination="XKg-pE-0bD" id="QWT-3B-RZt"/>
                                             <outlet property="statusBadgeWidthConstraint" destination="Aw7-bC-9iv" id="GBg-FQ-oj5"/>
                                             <outlet property="titleLabel" destination="Pt3-N3-5nI" id="VnP-dQ-Yht"/>
                                         </connections>
@@ -599,7 +600,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GmM-De-644" firstAttribute="top" secondItem="f8P-6Q-teW" secondAttribute="top" id="2B0-n2-DxR"/>
-                            <constraint firstItem="Hzq-Y5-JXH" firstAttribute="bottom" secondItem="Ovo-DL-A4n" secondAttribute="bottom" id="3Ja-vO-ijw"/>
+                            <constraint firstItem="Ovo-DL-A4n" firstAttribute="bottom" secondItem="Hzq-Y5-JXH" secondAttribute="bottom" id="3Ja-vO-ijw"/>
                             <constraint firstItem="598-Dj-OAs" firstAttribute="trailing" secondItem="Ovo-DL-A4n" secondAttribute="trailing" id="3mM-q9-iGt"/>
                             <constraint firstItem="598-Dj-OAs" firstAttribute="top" secondItem="f8P-6Q-teW" secondAttribute="top" id="65O-wZ-cnI"/>
                             <constraint firstItem="GmM-De-644" firstAttribute="leading" secondItem="Ovo-DL-A4n" secondAttribute="leading" id="8Hc-XS-NaH"/>

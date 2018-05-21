@@ -61,12 +61,15 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
       
       if isChecked {
         cell.accessoryType = .none
-        if !post.tagNames.contains(tagName) {
-          post.tagNames.append(tagName)
-        }
+        post.tags = post.tags.filter() { $0.name != tagName } // remove the tapped tagName
       } else {
         cell.accessoryType = .checkmark
-        post.tagNames = post.tagNames.filter() { $0 != tagName } // remove the tapped tagName
+        let selectedTag = _tags[indexPath.row]
+        if !post.tags.contains(where: { (tag: Tag) -> Bool in
+          tag.name == selectedTag.name
+        }) {
+          post.tags.append(selectedTag)
+        }
       }
     }
   }
@@ -97,10 +100,11 @@ class PostInfoViewController: GhostBaseDetailViewController, UITableViewDataSour
       
     // tags section
     case 1:
+      // this should prolly test for Tag.id instead of Tag.name, but I'm feeling a little lazy right now
       cell = tableView.dequeueReusableCell(withIdentifier: "postInfoTag")!
       let tagName = self._tags[indexPath.row].name
       cell.textLabel?.text = tagName
-      if post.tagNames.contains(tagName) {
+      if post.tags.contains(where: { (tag: Tag) -> Bool in tag.name == tagName }) {
         cell.accessoryType = .checkmark
       }
       

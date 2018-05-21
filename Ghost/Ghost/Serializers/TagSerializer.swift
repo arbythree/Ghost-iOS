@@ -10,6 +10,7 @@ import Foundation
 
 class TagSerializer {
   class func populateFromJSON(tag: Tag, json: NSDictionary) {
+    tag.id = json["id"] as! String
     tag.name = json["name"] as! String
   }
 }

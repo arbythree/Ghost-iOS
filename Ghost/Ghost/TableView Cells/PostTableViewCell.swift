@@ -20,9 +20,21 @@ class PostTableViewCell: UITableViewCell {
       
       titleLabel.text = post?.title;
       authorLabel.text = post?.author;
+      
       if post!.published {
+        // hide the pill
         statusBadgeWidthConstraint.constant = 0;
         authorLabelPaddingConstraint.constant = 0;
+      } else if post!.isDraft {
+        // show the pill in red
+        self.statusBadge.backgroundColor = UIColor(named: "ghostRed")
+        self.statusBadge.text = "Draft"
+        self.statusBadge.sizeToFit()
+      } else if post!.isScheduled {
+        // show the pill in green
+        self.statusBadge.backgroundColor = UIColor(named: "ghostGreen")
+        self.statusBadge.text = "Scheduled"
+        self.statusBadge.sizeToFit()
       }
     }
   }
@@ -32,4 +44,5 @@ class PostTableViewCell: UITableViewCell {
   @IBOutlet weak var statusBadgeWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var authorLabelPaddingConstraint: NSLayoutConstraint!
   @IBOutlet weak var selectedView: UIView!
+  @IBOutlet weak var statusBadge: UILabel!
 }

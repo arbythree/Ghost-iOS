@@ -20,6 +20,17 @@ class PostSerializer {
     result["mobiledoc"] = post.mobiledoc
     result["status"]    = post.status
     
+    var tagArray: [[String: String]] = []
+    
+    post.tags.forEach { tag in
+      var tagDict: [String: String] = [:]
+      tagDict["id"] = tag.id
+      tagDict["name"] = tag.name
+      tagArray.append(tagDict)
+    }
+    
+    result["tags"] = tagArray
+    
     return result
   }
   
@@ -37,14 +48,15 @@ class PostSerializer {
         path: "/posts",
         parameters: params,
         success: { result in
-          
+          //TODO: handle this
         },
         failure: {
+          //TODO: handle this
         }
       )
     } else {
       client.put(
-        path: "/posts/\(post.id)",
+        path: "/posts/\(post.id)/?include=tags",
         parameters: params,
         success: { (result) in
           //TODO: handle this
@@ -83,17 +95,21 @@ class PostSerializer {
     post.author = authorJSON["name"] as! String;
 
     // tags
-    post.tagNames = []
+    post.tags = []
+    
     let tagsJSON = json["tags"] as! [[String: Any]];
     for tagJSON in tagsJSON {
-      post.tagNames.append(tagJSON["name"] as! String);
+      let tag = Tag()
+      tag.id = tagJSON["id"] as! String;
+      tag.name = tagJSON["name"] as! String;
+      post.tags.append(tag);
     }
     
     // pull dates
-    let ua = json["updated_at"]   as! String;
+    let ua = json["updated_at"] as! String;
     post.updated_at = formatter.date(from: ua)!;
     
-    let ca = json["created_at"]   as! String;
+    let ca = json["created_at"] as! String;
     post.created_at = formatter.date(from: ca)!;
     
     let pa = json["published_at"];

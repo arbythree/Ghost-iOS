@@ -12,23 +12,23 @@ import Foundation
 import Alamofire
 
 enum PostStatus : String {
-  case Draft = "draft", Published = "published"
+  case Draft = "draft", Published = "published", Scheduled = "scheduled"
 }
 
 class Post {
-  var id:           String = "";
-  var title:        String = "";
-  var author:       String = "";
-  var status:       String = "";
-  var excerpt:      String = "";
+  var id:           String = ""
+  var title:        String = ""
+  var author:       String = ""
+  var status:       String = ""
+  var excerpt:      String = ""
   var markdown:     String?
-  var tagNames:     [String] = [];
-  var updated_at:   Date = Date();
-  var created_at:   Date = Date();
+  var tags:          [Tag] = []
+  var updated_at:   Date = Date()
+  var created_at:   Date = Date()
   var published_at: Date?;
   var published: Bool! {
     get {
-      return status == PostStatus.Published.rawValue;
+      return status == PostStatus.Published.rawValue
     }
   }
   
@@ -47,6 +47,12 @@ class Post {
   var isPublished: Bool! {
     get {
       return status == PostStatus.Published.rawValue
+    }
+  }
+  
+  var isScheduled: Bool! {
+    get {
+      return status == PostStatus.Scheduled.rawValue
     }
   }
   

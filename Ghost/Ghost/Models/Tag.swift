@@ -10,6 +10,7 @@ import Foundation
 
 class Tag {
   var name: String = ""
+  var id:   String = ""
   
   class func all(success: @escaping ([Tag]) -> Void) -> Void {
     let client = GhostRESTClient();
@@ -29,5 +30,8 @@ class Tag {
   
   init(json: NSDictionary) {
     TagSerializer.populateFromJSON(tag: self, json: json)
+  }
+  
+  init() {
   }
 }
