@@ -24,7 +24,7 @@ class PostSerializer {
     
     post.tags.forEach { tag in
       var tagDict: [String: String] = [:]
-      tagDict["id"] = tag.id
+//      tagDict["id"] = tag.id
       tagDict["name"] = tag.name
       tagArray.append(tagDict)
     }
@@ -38,7 +38,7 @@ class PostSerializer {
   // I/Ray relied on the Android code base
   // and inspecting XHR requests in the browser
   class func save(post: Post) {
-    let client = GhostRESTClient()
+    let client = GhostRESTClient.shared
     let serialized = PostSerializer.serialize(post: post)
     let serializedArray = [serialized]
     let params = ["posts": serializedArray]
@@ -56,7 +56,7 @@ class PostSerializer {
       )
     } else {
       client.put(
-        path: "/posts/\(post.id)/",
+        path: "/posts/\(post.id)",
         parameters: params,
         success: { (result) in
           //TODO: handle this
@@ -69,7 +69,7 @@ class PostSerializer {
   }
   
   class func delete(post: Post) {
-    let client = GhostRESTClient()
+    let client = GhostRESTClient.shared
     client.delete(
       path: "/posts/\(post.id)",
       success: { () in },

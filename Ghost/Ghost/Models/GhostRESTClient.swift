@@ -11,6 +11,8 @@ import Alamofire
 import KeychainSwift
 
 class GhostRESTClient {
+  static let shared = GhostRESTClient()
+  
   var baseURL: String? {
     didSet {
       if baseURL == nil {
@@ -23,12 +25,12 @@ class GhostRESTClient {
         baseURL = String(stripped)
       }
       
-      let keychain = KeychainSwift();
+      let keychain = KeychainSwift()
       keychain.set(baseURL!, forKey: "baseURL")
     }
   }
 
-  init() {
+  private init() {
     let keychain = KeychainSwift();
     baseURL = keychain.get("baseURL")
     
@@ -58,7 +60,7 @@ class GhostRESTClient {
       let status = response.response?.statusCode;
       if (status == 200) {
         let json = response.result.value as! NSDictionary;
-        completionHandler(json);
+        completionHandler(json)
       }
     }
   }
@@ -75,10 +77,17 @@ class GhostRESTClient {
   }
   
   func put(path: String, parameters: [String: Any], success: @escaping (NSDictionary) -> Void, failure: @escaping () -> Void) {
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print(parameters)
+    
     var headers = authorizationHeader()
+    headers["Content-Type"] = "application/json; charset=utf-8"
     
     Alamofire.request(fullURL(path: path), method: .put, parameters: parameters, headers: authorizationHeader()).responseJSON { response in
-      
       let request = response.request
       let body = request?.httpBody
       let _ = body
@@ -88,6 +97,9 @@ class GhostRESTClient {
         let json = response.result.value as! NSDictionary;
         success(json)
       } else {
+        print("")
+        print("")
+        print("")
         print(response.result.debugDescription)
         failure()
       }

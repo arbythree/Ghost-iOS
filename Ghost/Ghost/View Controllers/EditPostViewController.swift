@@ -181,7 +181,7 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     let items = components.queryItems
     let name = items?.first?.value?.replacingOccurrences(of: "-", with: "").lowercased()
     let imageData = UIImageJPEGRepresentation(image, 0)!
-    let client = GhostRESTClient()
+    let client = GhostRESTClient.shared
     
     client.upload(
       imageData: imageData,
@@ -226,7 +226,8 @@ class EditPostViewController: GhostBaseDetailViewController, UITextViewDelegate,
     let down = Down(markdownString: post!.markdown!)
     let html = try? down.toHTML()
     let offset = webView.scrollView.contentOffset
-    webView.loadHTMLString(html!, baseURL: URL(string: GhostRESTClient().baseURL!))
+    let client = GhostRESTClient.shared
+    webView.loadHTMLString(html!, baseURL: URL(string: client.baseURL!))
     webView.scrollView.setContentOffset(offset, animated: false)
   }
   

@@ -31,7 +31,7 @@ class AuthenticationManager {
   }
   
   func attemptLogin(baseURL: String, username: String, password: String, success: @escaping (String) -> Void, failure:() -> Void) {
-    let client = GhostRESTClient();
+    let client = GhostRESTClient.shared
     
     client.baseURL = baseURL
     
@@ -45,7 +45,7 @@ class AuthenticationManager {
   }
   
   func logOut() {
-    let keychain = KeychainSwift();
+    let keychain = KeychainSwift()
     keychain.delete("token")
   }
 }

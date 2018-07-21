@@ -11,7 +11,7 @@ import Foundation
 // represents a file upload (typically an image from the device's library)
 class Upload {
   func save() {
-    let client = GhostRESTClient()
+    let client = GhostRESTClient.shared
     client.post(path: "/uploads", parameters: [:], success: { (response) in
       
     }, failure: {

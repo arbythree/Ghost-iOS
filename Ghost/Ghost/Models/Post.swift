@@ -101,7 +101,7 @@ class Post {
   // return all Posts
   //
   class func all(success: @escaping ([Post]) -> Void) {
-    let client = GhostRESTClient();
+    let client = GhostRESTClient.shared
     let params: Parameters = [
       "status" : "all",
       "include" : "author, tags",
@@ -109,13 +109,13 @@ class Post {
     
     // TODO: move this out to the PostSerializer
     client.getJSON(path: "/posts/", parameters: params, completionHandler: { responseJSON in
-      let postsJSON = responseJSON["posts"] as! NSArray;
-      var posts: [Post] = [];
+      let postsJSON = responseJSON["posts"] as! NSArray
+      var posts: [Post] = []
       for postJSON in postsJSON {
-        let post = Post(json: postJSON as! NSDictionary);
-        posts.append(post);
+        let post = Post(json: postJSON as! NSDictionary)
+        posts.append(post)
       }
-      success(posts);
+      success(posts)
     });
   }
   
@@ -126,7 +126,7 @@ class Post {
       return
     }
     
-    let client = GhostRESTClient()
+    let client = GhostRESTClient.shared
     let params: Parameters = [ "formats": "html, plaintext, mobiledoc", "status": "all" ]
     client.getJSON(path: "/posts/\(id)/", parameters: params, completionHandler: { responseJSON in
       let postsJSON = responseJSON["posts"] as! NSArray

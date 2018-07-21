@@ -10,18 +10,18 @@ import Foundation
 
 class User {
   class func all(success: @escaping ([User]) -> Void) -> Void {
-    let client = GhostRESTClient();
+    let client = GhostRESTClient.shared
     
-    let params: Dictionary = [ "limit": "all" ];
+    let params: Dictionary = [ "limit": "all" ]
     
     client.getJSON(path: "/users/", parameters: params, completionHandler: { responseJSON in
-      let tagsJSON = responseJSON["users"] as! NSArray;
-      var users: [User] = [];
+      let tagsJSON = responseJSON["users"] as! NSArray
+      var users: [User] = []
       for tagJSON in tagsJSON {
-        let user = User(json: tagJSON as! NSDictionary);
-        users.append(user);
+        let user = User(json: tagJSON as! NSDictionary)
+        users.append(user)
       }
-      success(users);
+      success(users)
     });
   }
   
