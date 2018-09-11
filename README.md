@@ -3,10 +3,10 @@
 As of this writing (12 May 2018), the project uses XCode 9.4 beta, which requires Apple Developer membership to obtain.
 
 The project uses Carthage for dependency management:
-
-```brew install carthage
-```carthage update
-
+```bash
+brew install carthage
+carthage update
+```
 # Tests
 
 Test implementation leaves much to be desired. But you can run the test suite via CMD+U in Xcode.
